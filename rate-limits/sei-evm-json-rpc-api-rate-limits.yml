@@ -1,0 +1,62 @@
+name: Sei EVM JSON-RPC API Rate Limits
+description: >-
+  Rate limit policies for the Sei EVM JSON-RPC API as enforced on the public
+  sei-apis.com endpoints. Limits are per IP address. Dedicated/private
+  endpoints through commercial providers have no enforced rate limits.
+updated: '2026-06-13'
+source: https://rhinostake.com/resources/sei
+
+limits:
+  - tier: Public (Free)
+    endpoint: https://evm-rpc.sei-apis.com
+    network: pacific-1 (mainnet)
+    rateLimit: 15
+    rateLimitUnit: requests per second
+    rateLimitScope: per IP address
+    authentication: none
+    notes: >-
+      No API key required. Suitable for development and basic CLI usage.
+      Not recommended for production dApps with significant traffic.
+
+  - tier: Public (Free)
+    endpoint: https://evm-rpc-testnet.sei-apis.com
+    network: atlantic-2 (testnet)
+    rateLimit: 15
+    rateLimitUnit: requests per second
+    rateLimitScope: per IP address
+    authentication: none
+    notes: >-
+      Testnet endpoint for development and testing. Same rate limit as mainnet.
+
+  - tier: Public (Free)
+    endpoint: https://evm-rpc-arctic-1.sei-apis.com
+    network: arctic-1 (devnet)
+    rateLimit: 15
+    rateLimitUnit: requests per second
+    rateLimitScope: per IP address
+    authentication: none
+    notes: >-
+      Devnet endpoint. Used for early-stage development and testing.
+
+  - tier: Private / Dedicated
+    endpoint: Custom (contact provider)
+    network: pacific-1 (mainnet)
+    rateLimit: unlimited
+    rateLimitUnit: N/A
+    rateLimitScope: dedicated node
+    authentication: API key (varies by provider)
+    notes: >-
+      Private endpoints are available through RHINO and other infrastructure
+      providers. No rate limiting is enforced. Recommended for production
+      dApps and high-throughput trading applications.
+
+providers:
+  - name: RHINO (sei-apis.com)
+    url: https://rhinostake.com/resources/sei
+    nodes: 13 mainnet backing nodes with geo-routing and global failover
+  - name: Ankr
+    url: https://www.ankr.com/docs/rpc-service/chains/chains-api/sei/
+  - name: QuickNode
+    url: https://www.quicknode.com/docs/sei
+  - name: DRPC
+    url: https://drpc.org

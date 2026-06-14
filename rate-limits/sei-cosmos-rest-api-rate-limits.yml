@@ -1,0 +1,74 @@
+name: Sei Cosmos REST API (LCD) Rate Limits
+description: >-
+  Rate limit policies for the Sei Cosmos REST (LCD) API as enforced on the
+  public sei-apis.com endpoints. Limits are per IP address. Dedicated/private
+  endpoints through commercial providers have no enforced rate limits.
+updated: '2026-06-13'
+source: https://rhinostake.com/resources/sei
+
+limits:
+  - tier: Public (Free)
+    endpoint: https://rest.sei-apis.com
+    network: pacific-1 (mainnet)
+    port: 1317
+    rateLimit: 15
+    rateLimitUnit: requests per second
+    rateLimitScope: per IP address
+    authentication: none
+    notes: >-
+      No API key required. Provides access to Cosmos SDK module endpoints
+      for bank, staking, governance, distribution, and Sei-native DEX queries.
+
+  - tier: Public (Free)
+    endpoint: https://rest-testnet.sei-apis.com
+    network: atlantic-2 (testnet)
+    port: 1317
+    rateLimit: 15
+    rateLimitUnit: requests per second
+    rateLimitScope: per IP address
+    authentication: none
+    notes: Testnet LCD endpoint for development and integration testing.
+
+  - tier: Public (Free)
+    endpoint: https://rest-arctic-1.sei-apis.com
+    network: arctic-1 (devnet)
+    port: 1317
+    rateLimit: 15
+    rateLimitUnit: requests per second
+    rateLimitScope: per IP address
+    authentication: none
+    notes: Devnet LCD endpoint for early-stage development.
+
+  - tier: Private / Dedicated
+    endpoint: Custom (contact provider)
+    network: pacific-1 (mainnet)
+    port: 1317
+    rateLimit: unlimited
+    rateLimitUnit: N/A
+    rateLimitScope: dedicated node
+    authentication: API key (varies by provider)
+    notes: >-
+      Private LCD endpoints available through RHINO and other infrastructure
+      providers. No rate limiting enforced. gRPC also available at
+      grpcs://grpc.sei-apis.com:443 for production use.
+
+  - tier: Self-Hosted Node
+    endpoint: http://localhost:1317
+    network: any
+    port: 1317
+    rateLimit: unlimited
+    authentication: none
+    notes: >-
+      Running a local seid node provides unrestricted LCD access.
+      Maximum open connections default to 1,000. Swagger UI enabled
+      by default at http://localhost:1317/swagger.
+
+additionalEndpoints:
+  - type: Tendermint RPC
+    mainnet: https://rpc.sei-apis.com
+    testnet: https://rpc-testnet.sei-apis.com
+    port: 26657
+    rateLimit: 15 req/s (public)
+  - type: gRPC
+    mainnet: grpcs://grpc.sei-apis.com:443
+    rateLimit: 15 req/s (public)

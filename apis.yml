@@ -1,0 +1,123 @@
+aid: sei
+name: Sei
+description: >-
+  Sei is a high-performance Layer 1 blockchain optimized for trading and
+  decentralized exchange (DEX) applications. It is the first parallelized EVM
+  blockchain, delivering sub-second block times (~400ms), 100 MGas/s throughput,
+  and full Ethereum compatibility without code changes. Sei combines Twin Turbo
+  Consensus, a parallelization engine, and SeiDB to eliminate traditional
+  performance bottlenecks. Developers can interact with Sei through EVM
+  JSON-RPC endpoints (Ethereum-compatible) and Cosmos REST/LCD endpoints for
+  querying markets, orders, accounts, staking, governance, and DEX state on the
+  pacific-1 mainnet and atlantic-2 testnet networks.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Blockchain
+  - Layer 1
+  - EVM
+  - DeFi
+  - DEX
+  - Trading
+  - Cosmos
+  - Web3
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/sei/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+created: '2026-06-13'
+modified: '2026-06-13'
+apis:
+  - aid: sei:sei-evm-json-rpc-api
+    name: Sei EVM JSON-RPC API
+    description: >-
+      Ethereum-compatible JSON-RPC API for interacting with Sei's EVM layer.
+      Supports standard Ethereum methods for sending transactions, querying
+      account balances and code, retrieving block and transaction data, managing
+      log filters, estimating gas, and tracing transaction execution. Also
+      includes Sei-specific extensions for cross-VM address resolution and
+      synthetic transaction lookups. The public mainnet endpoint is rate-limited
+      to 15 requests per second; dedicated endpoints are available through
+      infrastructure providers for production workloads.
+    humanURL: https://docs.sei.io/evm/reference
+    baseURL: https://evm-rpc.sei-apis.com
+    tags:
+      - EVM
+      - JSON-RPC
+      - Ethereum
+      - Blockchain
+      - Transactions
+      - Smart Contracts
+    properties:
+      - type: Documentation
+        url: https://docs.sei.io/evm/reference
+      - type: GettingStarted
+        url: https://docs.sei.io
+      - type: RateLimits
+        url: rate-limits/sei-evm-json-rpc-api-rate-limits.yml
+    contact:
+      - type: GitHub
+        url: https://github.com/sei-protocol/sei-chain
+      - type: Discord
+        url: https://discord.gg/sei
+
+  - aid: sei:sei-cosmos-rest-api
+    name: Sei Cosmos REST API (LCD)
+    description: >-
+      Cosmos SDK REST API (Light Client Daemon / LCD) exposing HTTP endpoints
+      for querying Sei blockchain state including bank balances and token supply,
+      staking delegations and validator info, governance proposals, distribution
+      rewards and commissions, minting parameters, IBC channels, and Sei-native
+      DEX markets and orders. Available on mainnet (pacific-1) at port 1317 via
+      public infrastructure providers. The public REST endpoint is rate-limited
+      to 15 requests per second. Swagger/OpenAPI documentation can be enabled
+      on self-hosted nodes.
+    humanURL: https://docs.sei.io/cosmos-sdk/api
+    baseURL: https://rest.sei-apis.com
+    tags:
+      - Cosmos
+      - LCD
+      - REST
+      - Blockchain
+      - Staking
+      - Governance
+      - DEX
+      - Accounts
+    properties:
+      - type: Documentation
+        url: https://docs.sei.io/cosmos-sdk/api
+      - type: RateLimits
+        url: rate-limits/sei-cosmos-rest-api-rate-limits.yml
+    contact:
+      - type: GitHub
+        url: https://github.com/sei-protocol/sei-chain
+      - type: Discord
+        url: https://discord.gg/sei
+
+common:
+  - type: Website
+    url: https://sei.io
+  - type: Documentation
+    url: https://docs.sei.io
+  - type: GitHub
+    url: https://github.com/sei-protocol
+  - type: GitHub
+    url: https://github.com/sei-protocol/sei-chain
+  - type: Discord
+    url: https://discord.gg/sei
+  - type: Blog
+    url: https://blog.sei.io
+  - type: X
+    url: https://x.com/SeiNetwork
+  - type: BlockExplorer
+    url: https://www.seiscan.app
+  - type: Faucet
+    url: https://docs.sei.io/getting-started/faucet
+  - type: StatusPage
+    url: https://status.sei.io
+  - type: FinOps
+    url: finops/sei-finops.md
+
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+    email: kin@apievangelist.com
