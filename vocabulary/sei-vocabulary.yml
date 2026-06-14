@@ -1,0 +1,162 @@
+vocabulary:
+  name: Sei API Vocabulary
+  description: Key terms and concepts used across Sei blockchain APIs
+  url: https://sei.io
+
+terms:
+
+  # Core Blockchain Concepts
+  - term: sei
+    label: Sei
+    description: The native token and blockchain network built on Cosmos SDK with EVM compatibility
+    type: Token
+
+  - term: pacific-1
+    label: Pacific-1 Mainnet
+    description: The Sei production mainnet network identifier
+    type: Network
+
+  - term: atlantic-2
+    label: Atlantic-2 Testnet
+    description: The Sei test network identifier for development and testing
+    type: Network
+
+  - term: twin-turbo-consensus
+    label: Twin Turbo Consensus
+    description: Sei's dual-track consensus mechanism enabling sub-second block finality (~400ms)
+    type: Protocol
+
+  - term: parallelized-evm
+    label: Parallelized EVM
+    description: Sei's parallelization engine that allows concurrent transaction execution while maintaining EVM compatibility
+    type: Feature
+
+  - term: sei-db
+    label: SeiDB
+    description: Sei's optimized database layer eliminating traditional performance bottlenecks
+    type: Infrastructure
+
+  # API Types
+  - term: evm-json-rpc
+    label: EVM JSON-RPC
+    description: Ethereum-compatible JSON-RPC interface at evm-rpc.sei-apis.com for interacting with Sei's EVM layer
+    type: APIProtocol
+    endpoint: https://evm-rpc.sei-apis.com
+
+  - term: cosmos-lcd
+    label: Cosmos LCD (Light Client Daemon)
+    description: Cosmos SDK REST API at rest.sei-apis.com for querying blockchain state
+    type: APIProtocol
+    endpoint: https://rest.sei-apis.com
+
+  # EVM Concepts
+  - term: eth-block
+    label: Block
+    description: A unit of blockchain data containing a set of transactions in the EVM layer
+    type: DataType
+    api: EVM JSON-RPC
+
+  - term: eth-transaction
+    label: Transaction
+    description: A signed instruction to transfer value or invoke a smart contract on the EVM layer
+    type: DataType
+    api: EVM JSON-RPC
+
+  - term: smart-contract
+    label: Smart Contract
+    description: Self-executing code deployed on Sei's EVM layer
+    type: DataType
+    api: EVM JSON-RPC
+
+  - term: gas
+    label: Gas
+    description: Unit measuring computational work required to execute EVM operations
+    type: Concept
+    api: EVM JSON-RPC
+
+  - term: sei-address
+    label: Sei Address
+    description: Native Cosmos bech32 address format (sei1...)
+    type: DataType
+
+  - term: evm-address
+    label: EVM Address
+    description: Ethereum-compatible hex address (0x...) on Sei's EVM layer
+    type: DataType
+
+  # Cosmos SDK Concepts
+  - term: denom
+    label: Denomination
+    description: Token identifier in Cosmos SDK (e.g., usei for micro-SEI)
+    type: DataType
+    api: Cosmos REST API
+
+  - term: validator
+    label: Validator
+    description: Network node responsible for block production and staking in the Cosmos layer
+    type: Entity
+    api: Cosmos REST API
+
+  - term: delegation
+    label: Delegation
+    description: Staking of SEI tokens to a validator to earn rewards and participate in governance
+    type: Action
+    api: Cosmos REST API
+
+  - term: governance-proposal
+    label: Governance Proposal
+    description: On-chain proposal for network parameter changes or upgrades
+    type: Entity
+    api: Cosmos REST API
+
+  - term: ibc-channel
+    label: IBC Channel
+    description: Inter-Blockchain Communication channel connecting Sei to other Cosmos chains
+    type: Entity
+    api: Cosmos REST API
+
+  # DEX Concepts
+  - term: dex-market
+    label: DEX Market
+    description: Trading pair/market defined on Sei's native on-chain DEX
+    type: Entity
+    api: Cosmos REST API
+
+  - term: order
+    label: Order
+    description: Buy or sell order placed on Sei's native DEX
+    type: Entity
+    api: Cosmos REST API
+
+  - term: order-book
+    label: Order Book
+    description: Collection of open buy and sell orders for a DEX market
+    type: Entity
+    api: Cosmos REST API
+
+  # Infrastructure
+  - term: lcd-endpoint
+    label: LCD Endpoint
+    description: Public REST endpoint at rest.sei-apis.com (port 1317) for Cosmos SDK queries
+    type: Endpoint
+
+  - term: evm-rpc-endpoint
+    label: EVM RPC Endpoint
+    description: Public JSON-RPC endpoint at evm-rpc.sei-apis.com for Ethereum-compatible calls
+    type: Endpoint
+
+  - term: rate-limit
+    label: Rate Limit
+    description: Public endpoint limit of 15 requests per second for both EVM and Cosmos APIs
+    type: Constraint
+
+  - term: cosmwasm
+    label: CosmWasm
+    description: WebAssembly smart contract platform integrated with Sei's Cosmos layer
+    type: Feature
+
+  - term: wasm-contract
+    label: WASM Contract
+    description: WebAssembly smart contract deployed on Sei's Cosmos layer via CosmWasm
+    type: DataType
+    api: Cosmos REST API

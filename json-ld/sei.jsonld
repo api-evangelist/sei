@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "sei": "https://sei.io/vocab#",
+    "blockchain": "https://sei.io/vocab#blockchain",
+    "cosmos": "https://cosmos.network/vocab#",
+    "evm": "https://ethereum.org/vocab#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://sei.io",
+  "name": "Sei",
+  "description": "Sei is a high-performance Layer 1 blockchain optimized for trading and decentralized exchange (DEX) applications. It is the first parallelized EVM blockchain, delivering sub-second block times (~400ms), 100 MGas/s throughput, and full Ethereum compatibility without code changes.",
+  "url": "https://sei.io",
+  "documentation": "https://docs.sei.io",
+  "keywords": [
+    "Blockchain",
+    "Layer 1",
+    "EVM",
+    "DeFi",
+    "DEX",
+    "Trading",
+    "Cosmos",
+    "Web3"
+  ],
+  "provider": {
+    "@type": "Organization",
+    "name": "Sei Protocol",
+    "url": "https://sei.io",
+    "sameAs": [
+      "https://github.com/sei-protocol",
+      "https://x.com/SeiNetwork"
+    ]
+  },
+  "hasAPI": [
+    {
+      "@type": "WebAPI",
+      "@id": "https://evm-rpc.sei-apis.com",
+      "name": "Sei EVM JSON-RPC API",
+      "description": "Ethereum-compatible JSON-RPC API for interacting with Sei's EVM layer. Supports standard Ethereum methods for sending transactions, querying account balances and code, retrieving block and transaction data, managing log filters, estimating gas, and tracing transaction execution.",
+      "documentation": "https://docs.sei.io/evm/reference",
+      "termsOfService": "https://docs.sei.io",
+      "category": [
+        "EVM",
+        "JSON-RPC",
+        "Ethereum",
+        "Blockchain",
+        "Transactions",
+        "Smart Contracts"
+      ]
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://rest.sei-apis.com",
+      "name": "Sei Cosmos REST API (LCD)",
+      "description": "Cosmos SDK REST API (Light Client Daemon / LCD) exposing HTTP endpoints for querying Sei blockchain state including bank balances and token supply, staking delegations and validator info, governance proposals, distribution rewards and commissions, minting parameters, IBC channels, and Sei-native DEX markets and orders.",
+      "documentation": "https://docs.sei.io/cosmos-sdk/api",
+      "category": [
+        "Cosmos",
+        "LCD",
+        "REST",
+        "Blockchain",
+        "Staking",
+        "Governance",
+        "DEX",
+        "Accounts"
+      ]
+    }
+  ]
+}

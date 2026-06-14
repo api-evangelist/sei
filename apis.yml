@@ -54,6 +54,10 @@ apis:
         url: https://docs.sei.io
       - type: RateLimits
         url: rate-limits/sei-evm-json-rpc-api-rate-limits.yml
+      - type: JSONLd
+        url: json-ld/sei.jsonld
+      - type: Vocabulary
+        url: vocabulary/sei-vocabulary.yml
     contact:
       - type: GitHub
         url: https://github.com/sei-protocol/sei-chain
@@ -87,6 +91,10 @@ apis:
         url: https://docs.sei.io/cosmos-sdk/api
       - type: RateLimits
         url: rate-limits/sei-cosmos-rest-api-rate-limits.yml
+      - type: OpenAPI
+        url: openapi/sei-cosmos-rest-api.yml
+      - type: OpenAPI
+        url: openapi/sei-tendermint-rpc.yml
     contact:
       - type: GitHub
         url: https://github.com/sei-protocol/sei-chain
