@@ -54,7 +54,7 @@ apis:
         url: https://docs.sei.io
       - type: RateLimits
         url: rate-limits/sei-evm-json-rpc-api-rate-limits.yml
-      - type: JSONLd
+      - type: JSONLD
         url: json-ld/sei.jsonld
       - type: Vocabulary
         url: vocabulary/sei-vocabulary.yml
