@@ -1,0 +1,1798 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/sei-cosmos-rest-api.yml, openapi/sei-tendermint-rpc.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 177
+  by_action_class:
+    connected: 175
+    acting: 2
+  by_consequence:
+    read: 175
+    write: 2
+  human_in_the_loop_required: 0
+operations:
+- path: /cosmos/cosmos-sdk/accesscontrol/list_resource_dependency_mapping
+  method: get
+  operationId: CosmosAccesscontrolXV1Beta1ListResourceDependencyMapping
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/cosmos-sdk/accesscontrol/list_wasm_dependency_mapping
+  method: get
+  operationId: CosmosAccesscontrolXV1Beta1ListWasmDependencyMapping
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/cosmos-sdk/accesscontrol/params
+  method: get
+  operationId: CosmosAccesscontrolXV1Beta1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/cosmos-sdk/accesscontrol/resource_dependency_mapping_from_message_key/{message_key}
+  method: get
+  operationId: CosmosAccesscontrolXV1Beta1ResourceDependencyMappingFromMessageKey
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/cosmos-sdk/accesscontrol/wasm_dependency_mapping/{contract_address}
+  method: get
+  operationId: CosmosAccesscontrolXV1Beta1WasmDependencyMapping
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/auth/v1beta1/accounts
+  method: get
+  operationId: CosmosAuthV1Beta1Accounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/auth/v1beta1/accounts/{address}
+  method: get
+  operationId: CosmosAuthV1Beta1Account
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/auth/v1beta1/nextaccountnumber
+  method: get
+  operationId: CosmosAuthV1Beta1NextAccountNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/auth/v1beta1/params
+  method: get
+  operationId: CosmosAuthV1Beta1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/authz/v1beta1/grants
+  method: get
+  operationId: CosmosAuthzV1Beta1Grants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/authz/v1beta1/grants/grantee/{grantee}
+  method: get
+  operationId: CosmosAuthzV1Beta1GranteeGrants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/authz/v1beta1/grants/granter/{granter}
+  method: get
+  operationId: CosmosAuthzV1Beta1GranterGrants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/balances/{address}
+  method: get
+  operationId: CosmosBankV1Beta1AllBalances
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/balances/{address}/by_denom
+  method: get
+  operationId: CosmosBankV1Beta1Balance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/denoms_metadata
+  method: get
+  operationId: CosmosBankV1Beta1DenomsMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/denoms_metadata/{denom}
+  method: get
+  operationId: CosmosBankV1Beta1DenomMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/params
+  method: get
+  operationId: CosmosBankV1Beta1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/spendable_balances/{address}
+  method: get
+  operationId: CosmosBankV1Beta1SpendableBalances
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/supply
+  method: get
+  operationId: CosmosBankV1Beta1TotalSupply
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/bank/v1beta1/supply/{denom}
+  method: get
+  operationId: CosmosBankV1Beta1SupplyOf
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/base/tendermint/v1beta1/blocks/latest
+  method: get
+  operationId: CosmosBaseTendermintV1Beta1GetLatestBlock
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/base/tendermint/v1beta1/blocks/{height}
+  method: get
+  operationId: CosmosBaseTendermintV1Beta1GetBlockByHeight
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/base/tendermint/v1beta1/node_info
+  method: get
+  operationId: CosmosBaseTendermintV1Beta1GetNodeInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/base/tendermint/v1beta1/syncing
+  method: get
+  operationId: CosmosBaseTendermintV1Beta1GetSyncing
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/base/tendermint/v1beta1/validatorsets/latest
+  method: get
+  operationId: CosmosBaseTendermintV1Beta1GetLatestValidatorSet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/base/tendermint/v1beta1/validatorsets/{height}
+  method: get
+  operationId: CosmosBaseTendermintV1Beta1GetValidatorSetByHeight
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/community_pool
+  method: get
+  operationId: CosmosDistributionV1Beta1CommunityPool
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards
+  method: get
+  operationId: CosmosDistributionV1Beta1DelegationTotalRewards
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards/{validator_address}
+  method: get
+  operationId: CosmosDistributionV1Beta1DelegationRewards
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/delegators/{delegator_address}/validators
+  method: get
+  operationId: CosmosDistributionV1Beta1DelegatorValidators
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/delegators/{delegator_address}/withdraw_address
+  method: get
+  operationId: CosmosDistributionV1Beta1DelegatorWithdrawAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/params
+  method: get
+  operationId: CosmosDistributionV1Beta1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/validators/{validator_address}/commission
+  method: get
+  operationId: CosmosDistributionV1Beta1ValidatorCommission
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/validators/{validator_address}/outstanding_rewards
+  method: get
+  operationId: CosmosDistributionV1Beta1ValidatorOutstandingRewards
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/distribution/v1beta1/validators/{validator_address}/slashes
+  method: get
+  operationId: CosmosDistributionV1Beta1ValidatorSlashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/evidence/v1beta1/evidence
+  method: get
+  operationId: CosmosEvidenceV1Beta1AllEvidence
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/evidence/v1beta1/evidence/{evidence_hash}
+  method: get
+  operationId: CosmosEvidenceV1Beta1Evidence
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/feegrant/v1beta1/allowance/{granter}/{grantee}
+  method: get
+  operationId: CosmosFeegrantV1Beta1Allowance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/feegrant/v1beta1/allowances/{grantee}
+  method: get
+  operationId: CosmosFeegrantV1Beta1Allowances
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/feegrant/v1beta1/issued/{granter}
+  method: get
+  operationId: CosmosFeegrantV1Beta1AllowancesByGranter
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/params/{params_type}
+  method: get
+  operationId: CosmosGovV1Beta1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/proposals
+  method: get
+  operationId: CosmosGovV1Beta1Proposals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/proposals/{proposal_id}
+  method: get
+  operationId: CosmosGovV1Beta1Proposal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/proposals/{proposal_id}/deposits
+  method: get
+  operationId: CosmosGovV1Beta1Deposits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/proposals/{proposal_id}/deposits/{depositor}
+  method: get
+  operationId: CosmosGovV1Beta1Deposit
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/proposals/{proposal_id}/tally
+  method: get
+  operationId: CosmosGovV1Beta1TallyResult
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/proposals/{proposal_id}/votes
+  method: get
+  operationId: CosmosGovV1Beta1Votes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/gov/v1beta1/proposals/{proposal_id}/votes/{voter}
+  method: get
+  operationId: CosmosGovV1Beta1Vote
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/slashing/v1beta1/params
+  method: get
+  operationId: CosmosSlashingV1Beta1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/slashing/v1beta1/signing_infos
+  method: get
+  operationId: CosmosSlashingV1Beta1SigningInfos
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/slashing/v1beta1/signing_infos/{cons_address}
+  method: get
+  operationId: CosmosSlashingV1Beta1SigningInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/delegations/{delegator_addr}
+  method: get
+  operationId: CosmosStakingV1Beta1DelegatorDelegations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/delegators/{delegator_addr}/redelegations
+  method: get
+  operationId: CosmosStakingV1Beta1Redelegations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/delegators/{delegator_addr}/unbonding_delegations
+  method: get
+  operationId: CosmosStakingV1Beta1DelegatorUnbondingDelegations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/delegators/{delegator_addr}/validators
+  method: get
+  operationId: CosmosStakingV1Beta1DelegatorValidators
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/delegators/{delegator_addr}/validators/{validator_addr}
+  method: get
+  operationId: CosmosStakingV1Beta1DelegatorValidator
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/historical_info/{height}
+  method: get
+  operationId: CosmosStakingV1Beta1HistoricalInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/params
+  method: get
+  operationId: CosmosStakingV1Beta1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/pool
+  method: get
+  operationId: CosmosStakingV1Beta1Pool
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/validators
+  method: get
+  operationId: CosmosStakingV1Beta1Validators
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/validators/{validator_addr}
+  method: get
+  operationId: CosmosStakingV1Beta1Validator
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/validators/{validator_addr}/delegations
+  method: get
+  operationId: CosmosStakingV1Beta1ValidatorDelegations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}
+  method: get
+  operationId: CosmosStakingV1Beta1Delegation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}/unbonding_delegation
+  method: get
+  operationId: CosmosStakingV1Beta1UnbondingDelegation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/staking/v1beta1/validators/{validator_addr}/unbonding_delegations
+  method: get
+  operationId: CosmosStakingV1Beta1ValidatorUnbondingDelegations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/tx/v1beta1/simulate
+  method: post
+  operationId: CosmosTxV1Beta1Simulate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /cosmos/tx/v1beta1/txs
+  method: get
+  operationId: CosmosTxV1Beta1GetTxsEvent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/tx/v1beta1/txs
+  method: post
+  operationId: CosmosTxV1Beta1BroadcastTx
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /cosmos/tx/v1beta1/txs/block/{height}
+  method: get
+  operationId: CosmosTxV1Beta1GetBlockWithTxs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/tx/v1beta1/txs/{hash}
+  method: get
+  operationId: CosmosTxV1Beta1GetTx
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/upgrade/v1beta1/applied_plan/{name}
+  method: get
+  operationId: CosmosUpgradeV1Beta1AppliedPlan
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/upgrade/v1beta1/current_plan
+  method: get
+  operationId: CosmosUpgradeV1Beta1CurrentPlan
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/upgrade/v1beta1/module_versions
+  method: get
+  operationId: CosmosUpgradeV1Beta1ModuleVersions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmos/upgrade/v1beta1/upgraded_consensus_state/{last_height}
+  method: get
+  operationId: CosmosUpgradeV1Beta1UpgradedConsensusState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/code
+  method: get
+  operationId: CosmwasmWasmV1Codes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/code/{code_id}
+  method: get
+  operationId: CosmwasmWasmV1Code
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/code/{code_id}/contracts
+  method: get
+  operationId: CosmwasmWasmV1ContractsByCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/codes/pinned
+  method: get
+  operationId: CosmwasmWasmV1PinnedCodes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/contract/{address}
+  method: get
+  operationId: CosmwasmWasmV1ContractInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/contract/{address}/history
+  method: get
+  operationId: CosmwasmWasmV1ContractHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/contract/{address}/raw/{query_data}
+  method: get
+  operationId: CosmwasmWasmV1RawContractState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/contract/{address}/smart/{query_data}
+  method: get
+  operationId: CosmwasmWasmV1SmartContractState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cosmwasm/wasm/v1/contract/{address}/state
+  method: get
+  operationId: CosmwasmWasmV1AllContractState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/apps/interchain_accounts/host/v1/params
+  method: get
+  operationId: IbcApplicationsInterchainAccountsHostV1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/apps/transfer/v1/channels/{channel_id}/ports/{port_id}/escrow_address
+  method: get
+  operationId: IbcApplicationsTransferV1EscrowAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/apps/transfer/v1/denom_hashes/{trace}
+  method: get
+  operationId: IbcApplicationsTransferV1DenomHash
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/apps/transfer/v1/denom_traces
+  method: get
+  operationId: IbcApplicationsTransferV1DenomTraces
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/apps/transfer/v1/denom_traces/{hash}
+  method: get
+  operationId: IbcApplicationsTransferV1DenomTrace
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/apps/transfer/v1/params
+  method: get
+  operationId: IbcApplicationsTransferV1Params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels
+  method: get
+  operationId: IbcCoreChannelV1Channels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}
+  method: get
+  operationId: IbcCoreChannelV1Channel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/client_state
+  method: get
+  operationId: IbcCoreChannelV1ChannelClientState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/consensus_state/revision/{revision_number}/height/{revision_height}
+  method: get
+  operationId: IbcCoreChannelV1ChannelConsensusState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/next_sequence
+  method: get
+  operationId: IbcCoreChannelV1NextSequenceReceive
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_acknowledgements
+  method: get
+  operationId: IbcCoreChannelV1PacketAcknowledgements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_acks/{sequence}
+  method: get
+  operationId: IbcCoreChannelV1PacketAcknowledgement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments
+  method: get
+  operationId: IbcCoreChannelV1PacketCommitments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_ack_sequences}/unreceived_acks
+  method: get
+  operationId: IbcCoreChannelV1UnreceivedAcks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_commitment_sequences}/unreceived_packets
+  method: get
+  operationId: IbcCoreChannelV1UnreceivedPackets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments/{sequence}
+  method: get
+  operationId: IbcCoreChannelV1PacketCommitment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_receipts/{sequence}
+  method: get
+  operationId: IbcCoreChannelV1PacketReceipt
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/channel/v1/connections/{connection}/channels
+  method: get
+  operationId: IbcCoreChannelV1ConnectionChannels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/client/v1/params
+  method: get
+  operationId: IbcCoreClientV1ClientParams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/client_states
+  method: get
+  operationId: IbcCoreClientV1ClientStates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/client_states/{client_id}
+  method: get
+  operationId: IbcCoreClientV1ClientState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/client_status/{client_id}
+  method: get
+  operationId: IbcCoreClientV1ClientStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/consensus_states/{client_id}
+  method: get
+  operationId: IbcCoreClientV1ConsensusStates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/consensus_states/{client_id}/heights
+  method: get
+  operationId: IbcCoreClientV1ConsensusStateHeights
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/consensus_states/{client_id}/revision/{revision_number}/height/{revision_height}
+  method: get
+  operationId: IbcCoreClientV1ConsensusState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/upgraded_client_states
+  method: get
+  operationId: IbcCoreClientV1UpgradedClientState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/client/v1/upgraded_consensus_states
+  method: get
+  operationId: IbcCoreClientV1UpgradedConsensusState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/connection/v1/client_connections/{client_id}
+  method: get
+  operationId: IbcCoreConnectionV1ClientConnections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/connection/v1/connections
+  method: get
+  operationId: IbcCoreConnectionV1Connections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/connection/v1/connections/{connection_id}
+  method: get
+  operationId: IbcCoreConnectionV1Connection
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/connection/v1/connections/{connection_id}/client_state
+  method: get
+  operationId: IbcCoreConnectionV1ConnectionClientState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ibc/core/connection/v1/connections/{connection_id}/consensus_state/revision/{revision_number}/height/{revision_height}
+  method: get
+  operationId: IbcCoreConnectionV1ConnectionConsensusState
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/epoch/epoch
+  method: get
+  operationId: SeiprotocolSeichainEpochEpoch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/epoch/params
+  method: get
+  operationId: SeiprotocolSeichainEpochParams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/evm/evm_address
+  method: get
+  operationId: SeiprotocolSeichainEvmEVMAddressBySeiAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/evm/pointer
+  method: get
+  operationId: SeiprotocolSeichainEvmPointer
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/evm/pointer_version
+  method: get
+  operationId: SeiprotocolSeichainEvmPointerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/evm/sei_address
+  method: get
+  operationId: SeiprotocolSeichainEvmSeiAddressByEVMAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/evm/static_call
+  method: get
+  operationId: SeiprotocolSeichainEvmStaticCall
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /seichain/mint/v1beta1/minter
+  method: get
+  operationId: SeiprotocolSeichainMintMinter
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /seichain/mint/v1beta1/params
+  method: get
+  operationId: SeiprotocolSeichainMintParams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/denoms/actives
+  method: get
+  operationId: SeiprotocolSeichainOracleActives
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/denoms/exchange_rates
+  method: get
+  operationId: SeiprotocolSeichainOracleExchangeRates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/denoms/price_snapshot_history
+  method: get
+  operationId: SeiprotocolSeichainOraclePriceSnapshotHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/denoms/twaps/{lookback_seconds}
+  method: get
+  operationId: SeiprotocolSeichainOracleTwaps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/denoms/vote_targets
+  method: get
+  operationId: SeiprotocolSeichainOracleVoteTargets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/denoms/{denom}/exchange_rate
+  method: get
+  operationId: SeiprotocolSeichainOracleExchangeRate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/params
+  method: get
+  operationId: SeiprotocolSeichainOracleParams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/slash_window
+  method: get
+  operationId: SeiprotocolSeichainOracleSlashWindow
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/validators/{validator_addr}/feeder
+  method: get
+  operationId: SeiprotocolSeichainOracleFeederDelegation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/sei-chain/oracle/validators/{validator_addr}/vote_penalty_counter
+  method: get
+  operationId: SeiprotocolSeichainOracleVotePenaltyCounter
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/tokenfactory/denoms/allow_list
+  method: get
+  operationId: SeiprotocolSeichainTokenfactoryDenomAllowList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/tokenfactory/denoms/metadata
+  method: get
+  operationId: SeiprotocolSeichainTokenfactoryDenomMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/tokenfactory/denoms/{denom}/authority_metadata
+  method: get
+  operationId: SeiprotocolSeichainTokenfactoryDenomAuthorityMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/tokenfactory/denoms_from_creator/{creator}
+  method: get
+  operationId: SeiprotocolSeichainTokenfactoryDenomsFromCreator
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sei-protocol/seichain/tokenfactory/params
+  method: get
+  operationId: SeiprotocolSeichainTokenfactoryParams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /broadcast_tx_sync
+  method: get
+  operationId: broadcast_tx_sync
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /broadcast_tx
+  method: get
+  operationId: broadcast_tx
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /broadcast_tx_async
+  method: get
+  operationId: broadcast_tx_async
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /broadcast_tx_commit
+  method: get
+  operationId: broadcast_tx_commit
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /check_tx
+  method: get
+  operationId: check_tx
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events
+  method: get
+  operationId: events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /subscribe
+  method: get
+  operationId: subscribe
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /unsubscribe
+  method: get
+  operationId: unsubscribe
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /unsubscribe_all
+  method: get
+  operationId: unsubscribe_all
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /health
+  method: get
+  operationId: health
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /status
+  method: get
+  operationId: status
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lag_status
+  method: get
+  operationId: lag_status
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /net_info
+  method: get
+  operationId: net_info
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /dial_seeds
+  method: get
+  operationId: dial_seeds
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /dial_peers
+  method: get
+  operationId: dial_peers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /unsafe_flush_mempool
+  method: get
+  operationId: unsafe_flush_mempool
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /blockchain
+  method: get
+  operationId: blockchain
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /header
+  method: get
+  operationId: header
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /header_by_hash
+  method: get
+  operationId: header_by_hash
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /block
+  method: get
+  operationId: block
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /block_by_hash
+  method: get
+  operationId: block_by_hash
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /block_results
+  method: get
+  operationId: block_results
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /commit
+  method: get
+  operationId: commit
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /validators
+  method: get
+  operationId: validators
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /genesis
+  method: get
+  operationId: genesis
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /genesis_chunked
+  method: get
+  operationId: genesis_chunked
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /dump_consensus_state
+  method: get
+  operationId: dump_consensus_state
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /consensus_state
+  method: get
+  operationId: consensus_state
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /consensus_params
+  method: get
+  operationId: consensus_params
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /unconfirmed_txs
+  method: get
+  operationId: unconfirmed_txs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /num_unconfirmed_txs
+  method: get
+  operationId: num_unconfirmed_txs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx_search
+  method: get
+  operationId: tx_search
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /block_search
+  method: get
+  operationId: block_search
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx
+  method: get
+  operationId: tx
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /abci_info
+  method: get
+  operationId: abci_info
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /abci_query
+  method: get
+  operationId: abci_query
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /broadcast_evidence
+  method: get
+  operationId: broadcast_evidence
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

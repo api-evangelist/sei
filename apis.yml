@@ -102,6 +102,8 @@ apis:
         url: https://discord.gg/sei
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/sei-agentic-access.yml
   - type: DomainSecurity
     url: security/sei-domain-security.yml
   - type: Website
