@@ -1,0 +1,439 @@
+swagger: '2.0'
+info:
+  title: HTTP API Console ABCI Tx API
+  name: ''
+  description: ABCI APIs
+tags:
+- name: Tx
+  description: Transactions broadcast APIs
+paths:
+  /broadcast_tx_sync:
+    get:
+      summary: Returns with the response from CheckTx. Does not wait for DeliverTx result.
+      deprecated: true
+      tags:
+      - Tx
+      operationId: broadcast_tx_sync
+      description: 'This method is deprecated in Tendermint v0.36, and will be
+
+        removed in v0.37. Use `broadcast_tx`, which has similar
+
+        semantics.
+
+
+        This method blocks until CheckTx returns and reports its result, but
+
+        does not wait for the transaction to be included in a block. To know
+
+        when the transaction is included in a block, check for the transaction
+
+        event using JSON-RPC.  See
+
+        https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
+
+
+        See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
+
+        for formatting/encoding rules.
+
+        '
+      parameters:
+      - in: query
+        name: tx
+        required: true
+        schema:
+          type: string
+        example: '456'
+        description: The transaction
+      responses:
+        '200':
+          description: Empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastTxResponse'
+        '500':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /broadcast_tx:
+    get:
+      summary: Returns with the response from CheckTx. Does not wait for DeliverTx result.
+      tags:
+      - Tx
+      operationId: broadcast_tx
+      description: 'This method blocks until CheckTx returns and reports its result, but
+
+        does not wait for the transaction to be included in a block. To know
+
+        when the transaction is included in a block, check for the transaction
+
+        event using JSON-RPC.  See
+
+        https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
+
+
+        See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
+
+        for formatting/encoding rules.
+
+        '
+      parameters:
+      - in: query
+        name: tx
+        required: true
+        schema:
+          type: string
+        example: '456'
+        description: The transaction
+      responses:
+        '200':
+          description: Empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastTxResponse'
+        '500':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /broadcast_tx_async:
+    get:
+      summary: Returns right away, with no response. Does not wait for CheckTx nor DeliverTx results.
+      deprecated: true
+      tags:
+      - Tx
+      operationId: broadcast_tx_async
+      description: 'This method is deprecated in Tendermint v0.36, and will be
+
+        removed in v0.37. Use `broadcast_tx`.
+
+
+        This method submits the transaction and returns immediately without
+
+        waiting for the transaction to be checked (CheckTx) or committed.  Too
+
+        know when the transaction is included in a block, you can check for the
+
+        transaction event using JSON-RPC.  See
+
+        https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
+
+
+        See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
+
+        for formatting/encoding rules.
+
+        '
+      parameters:
+      - in: query
+        name: tx
+        required: true
+        schema:
+          type: string
+          example: '123'
+        description: The transaction
+      responses:
+        '200':
+          description: empty answer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastTxResponse'
+        '500':
+          description: empty error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /broadcast_tx_commit:
+    get:
+      summary: Returns with the responses from CheckTx and DeliverTx.
+      deprecated: true
+      tags:
+      - Tx
+      operationId: broadcast_tx_commit
+      description: 'This method waits for the transaction to be checked (CheckTx) and makes
+
+        a best effort to wait for it to be committed into a block before
+
+        returning.  It will report an error if the request times out before the
+
+        transaction commits.  If CheckTx or DeliverTx fails, the RPC will
+
+        succeed and report the failing (non-zero) ABCI result code.
+
+
+        WARNING: Use this only for testing and development. For production use,
+
+        call broadcast_tx.
+
+
+        To know when a transaction is included in a block, check for the
+
+        transaction event using JSON-RPC.  See
+
+        https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
+
+
+        See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
+
+        for formatting/encoding rules.
+
+        '
+      parameters:
+      - in: query
+        name: tx
+        required: true
+        schema:
+          type: string
+          example: '785'
+        description: The transaction
+      responses:
+        '200':
+          description: empty answer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastTxCommitResponse'
+        '500':
+          description: empty error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /check_tx:
+    get:
+      summary: Checks the transaction without executing it.
+      tags:
+      - Tx
+      operationId: check_tx
+      description: 'The transaction won\''t be added to the mempool.
+
+
+        Please refer to
+
+        https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
+
+        for formatting/encoding rules.
+
+        '
+      parameters:
+      - in: query
+        name: tx
+        required: true
+        schema:
+          type: string
+          example: '785'
+        description: The transaction
+      responses:
+        '200':
+          description: ABCI application's CheckTx response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckTxResponse'
+        '500':
+          description: empty error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CheckTxResponse:
+      type: object
+      required:
+      - error
+      - result
+      - id
+      - jsonrpc
+      properties:
+        error:
+          type: string
+          example: ''
+        result:
+          required:
+          - log
+          - data
+          - code
+          properties:
+            code:
+              type: string
+              example: '0'
+            data:
+              type: string
+              example: ''
+            log:
+              type: string
+              example: ''
+            info:
+              type: string
+              example: ''
+            gas_wanted:
+              type: string
+              example: '1'
+            gas_used:
+              type: string
+              example: '0'
+            events:
+              type: array
+              nullable: true
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: app
+                  attributes:
+                    type: array
+                    nullable: false
+                    items:
+                      $ref: '#/components/schemas/Event'
+            codespace:
+              type: string
+              example: bank
+          type: object
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
+    BroadcastTxResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      - error
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          required:
+          - code
+          - data
+          - log
+          - hash
+          properties:
+            code:
+              type: string
+              example: '0'
+            data:
+              type: string
+              example: ''
+            log:
+              type: string
+              example: ''
+            codespace:
+              type: string
+              example: ibc
+            hash:
+              type: string
+              example: 0D33F2F03A5234F38706E43004489E061AC40A2E
+          type: object
+        error:
+          type: string
+          example: ''
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
+    BroadcastTxCommitResponse:
+      type: object
+      required:
+      - error
+      - result
+      - id
+      - jsonrpc
+      properties:
+        error:
+          type: string
+          example: ''
+        result:
+          required:
+          - height
+          - hash
+          - deliver_tx
+          - check_tx
+          properties:
+            height:
+              type: string
+              example: '26682'
+            hash:
+              type: string
+              example: 75CA0F856A4DA078FC4911580360E70CEFB2EBEE
+            deliver_tx:
+              required:
+              - log
+              - data
+              - code
+              properties:
+                log:
+                  type: string
+                  example: ''
+                data:
+                  type: string
+                  example: ''
+                code:
+                  type: string
+                  example: '0'
+              type: object
+            check_tx:
+              required:
+              - log
+              - data
+              - code
+              properties:
+                log:
+                  type: string
+                  example: ''
+                data:
+                  type: string
+                  example: ''
+                code:
+                  type: string
+                  example: '0'
+              type: object
+          type: object
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
+    Event:
+      type: object
+      properties:
+        key:
+          type: string
+          example: YWN0aW9u
+        value:
+          type: string
+          example: c2VuZA==
+        index:
+          type: boolean
+          example: false
