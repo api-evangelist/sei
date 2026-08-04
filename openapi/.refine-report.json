@@ -1,0 +1,40 @@
+{
+  "provider": "sei",
+  "sources": [
+    "sei-abci-api-openapi.yml",
+    "sei-events-api-openapi.yml",
+    "sei-evidence-api-openapi.yml",
+    "sei-info-api-openapi.yml",
+    "sei-query-api-openapi.yml",
+    "sei-service-api-openapi.yml",
+    "sei-tx-api-openapi.yml",
+    "sei-unsafe-api-openapi.yml",
+    "sei-websocket-api-openapi.yml"
+  ],
+  "outputs": [
+    "sei-abci-api-openapi.yml",
+    "sei-events-api-openapi.yml",
+    "sei-evidence-api-openapi.yml",
+    "sei-info-api-openapi.yml",
+    "sei-query-api-openapi.yml",
+    "sei-service-api-openapi.yml",
+    "sei-tx-api-openapi.yml",
+    "sei-unsafe-api-openapi.yml",
+    "sei-websocket-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [
+    "sei-abci-api-openapi.yml: info.version missing",
+    "sei-events-api-openapi.yml: info.version missing",
+    "sei-evidence-api-openapi.yml: info.version missing",
+    "sei-info-api-openapi.yml: info.version missing",
+    "sei-query-api-openapi.yml: info.version missing",
+    "sei-service-api-openapi.yml: info.version missing",
+    "sei-tx-api-openapi.yml: info.version missing",
+    "sei-unsafe-api-openapi.yml: info.version missing",
+    "sei-websocket-api-openapi.yml: info.version missing"
+  ],
+  "notes": [],
+  "skipped": []
+}
