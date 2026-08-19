@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HTTP API Console ABCI Evidence API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Evidence",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcast evidence of the misbehavior.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/broadcast_evidence",
+            "params": [
+              {
+                "name": "evidence",
+                "value": "",
+                "type": "query",
+                "description": "JSON evidence"
+              }
+            ]
+          },
+          "docs": "Broadcast evidence of the misbehavior.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

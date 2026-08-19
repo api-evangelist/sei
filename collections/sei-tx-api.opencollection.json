@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HTTP API Console ABCI Tx API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tx",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns with the response from CheckTx. Does not wait for DeliverTx result.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/broadcast_tx_sync",
+            "params": [
+              {
+                "name": "tx",
+                "value": "456",
+                "type": "query",
+                "description": "The transaction"
+              }
+            ]
+          },
+          "docs": "This method is deprecated in Tendermint v0.36, and will be\nremoved in v0.37. Use `broadcast_tx`, which has similar\nsemantics.\n\nThis method blocks until CheckTx returns and reports its result, but\ndoes not wait for the transaction to be included in a block. To know\nwhen the transaction is included in a block, check for the transaction\nevent using JSON-RPC.  See\nhttps://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html\n\nSee https://docs.tendermint.com/master/tendermint-co"
+        },
+        {
+          "info": {
+            "name": "Returns with the response from CheckTx. Does not wait for DeliverTx result.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/broadcast_tx",
+            "params": [
+              {
+                "name": "tx",
+                "value": "456",
+                "type": "query",
+                "description": "The transaction"
+              }
+            ]
+          },
+          "docs": "This method blocks until CheckTx returns and reports its result, but\ndoes not wait for the transaction to be included in a block. To know\nwhen the transaction is included in a block, check for the transaction\nevent using JSON-RPC.  See\nhttps://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html\n\nSee https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting\nfor formatting/encoding rules.\n"
+        },
+        {
+          "info": {
+            "name": "Returns right away, with no response. Does not wait for CheckTx nor DeliverTx results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/broadcast_tx_async",
+            "params": [
+              {
+                "name": "tx",
+                "value": "",
+                "type": "query",
+                "description": "The transaction"
+              }
+            ]
+          },
+          "docs": "This method is deprecated in Tendermint v0.36, and will be\nremoved in v0.37. Use `broadcast_tx`.\n\nThis method submits the transaction and returns immediately without\nwaiting for the transaction to be checked (CheckTx) or committed.  Too\nknow when the transaction is included in a block, you can check for the\ntransaction event using JSON-RPC.  See\nhttps://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html\n\nSee https://docs.tendermint.com/master/tendermint-core/using-tender"
+        },
+        {
+          "info": {
+            "name": "Returns with the responses from CheckTx and DeliverTx.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/broadcast_tx_commit",
+            "params": [
+              {
+                "name": "tx",
+                "value": "",
+                "type": "query",
+                "description": "The transaction"
+              }
+            ]
+          },
+          "docs": "This method waits for the transaction to be checked (CheckTx) and makes\na best effort to wait for it to be committed into a block before\nreturning.  It will report an error if the request times out before the\ntransaction commits.  If CheckTx or DeliverTx fails, the RPC will\nsucceed and report the failing (non-zero) ABCI result code.\n\nWARNING: Use this only for testing and development. For production use,\ncall broadcast_tx.\n\nTo know when a transaction is included in a block, check for the\ntransac"
+        },
+        {
+          "info": {
+            "name": "Checks the transaction without executing it.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/check_tx",
+            "params": [
+              {
+                "name": "tx",
+                "value": "",
+                "type": "query",
+                "description": "The transaction"
+              }
+            ]
+          },
+          "docs": "The transaction won\\'t be added to the mempool.\n\nPlease refer to\nhttps://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting\nfor formatting/encoding rules.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
