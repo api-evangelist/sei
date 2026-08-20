@@ -54,6 +54,13 @@ apis:
   - JSON-RPC
   - Ethereum
   - Blockchain
+  - Transaction
+  - Smart Contracts
+  tags_raw:
+  - EVM
+  - JSON-RPC
+  - Ethereum
+  - Blockchain
   - Transactions
   - Smart Contracts
   properties:
@@ -92,6 +99,8 @@ apis:
   humanURL: https://docs.sei.io/evm/reference
   baseURL: https://evm-rpc.sei-apis.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -190,6 +199,8 @@ apis:
   humanURL: https://docs.sei.io/evm/reference
   baseURL: https://evm-rpc.sei-apis.com
   tags:
+  - WebSocket
+  tags_raw:
   - Websocket
   properties:
   - type: OpenAPI
