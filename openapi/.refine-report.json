@@ -1,23 +1,16 @@
 {
   "provider": "sei",
   "sources": [
-    "sei-abci-api-openapi.yml",
-    "sei-events-api-openapi.yml",
-    "sei-evidence-api-openapi.yml",
-    "sei-info-api-openapi.yml",
-    "sei-query-api-openapi.yml",
-    "sei-service-api-openapi.yml",
-    "sei-tx-api-openapi.yml",
-    "sei-unsafe-api-openapi.yml",
-    "sei-websocket-api-openapi.yml"
+    "_original/sei-cosmos-rest-api.yml",
+    "_original/sei-tendermint-rpc.yml"
   ],
   "outputs": [
+    "sei-query-api-openapi.yml",
+    "sei-service-api-openapi.yml",
     "sei-abci-api-openapi.yml",
     "sei-events-api-openapi.yml",
     "sei-evidence-api-openapi.yml",
     "sei-info-api-openapi.yml",
-    "sei-query-api-openapi.yml",
-    "sei-service-api-openapi.yml",
     "sei-tx-api-openapi.yml",
     "sei-unsafe-api-openapi.yml",
     "sei-websocket-api-openapi.yml"
@@ -25,16 +18,24 @@
   "archived": [],
   "errors": [],
   "warnings": [
-    "sei-abci-api-openapi.yml: info.version missing",
-    "sei-events-api-openapi.yml: info.version missing",
-    "sei-evidence-api-openapi.yml: info.version missing",
-    "sei-info-api-openapi.yml: info.version missing",
-    "sei-query-api-openapi.yml: info.version missing",
-    "sei-service-api-openapi.yml: info.version missing",
-    "sei-tx-api-openapi.yml: info.version missing",
-    "sei-unsafe-api-openapi.yml: info.version missing",
-    "sei-websocket-api-openapi.yml: info.version missing"
+    "sei-cosmos-rest-api.yml: info.version missing"
   ],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sei-cosmos-rest-api.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "sei-cosmos-rest-api.yml: declared missing tag: Query",
+    "sei-cosmos-rest-api.yml: declared missing tag: Service",
+    "sei-tendermint-rpc.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "sei-abci-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-evidence-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-query-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-tx-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-unsafe-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sei-websocket-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
