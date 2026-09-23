@@ -4,7 +4,24 @@ info:
   contact:
     name: Tendermint RPC
     url: https://github.com/tendermint/tendermint/issues/new/choose
-  description: "Tendermint supports the following RPC protocols:\n\n* URI over HTTP\n* JSON-RPC 2.0 over HTTP\n* JSON-RPC 2.0 over websockets (deprecated)\n\n## Configuration\n\nRPC can be configured by tuning parameters under `[rpc]` table in the\n`$TMHOME/config/config.toml` file or by using the `--rpc.X` command-line\nflags.\n\nDefault rpc listen address is `tcp://0.0.0.0:26657`.\nTo set another address, set the `laddr` config parameter to desired value.\nCORS (Cross-Origin Resource Sharing) can be enabled by setting\n`cors_allowed_origins`, `cors_allowed_methods`, `cors_allowed_headers`\nconfig parameters.\n\n## Arguments\n\nArguments which expect strings or byte arrays may be passed as quoted\nstrings, like `\"abc\"` or as `0x`-prefixed strings, like `0x616263`.\n\n## URI/HTTP\n\nA GET request with arguments encoded as query parameters:\n\n    curl localhost:26657/block?height=5\n\n## JSONRPC/HTTP\n\nJSONRPC requests can be POST'd to the root RPC endpoint via HTTP.\n\n    curl --header \"Content-Type: application/json\" --request POST --data '{\"method\": \"block\", \"params\": [\"5\"], \"id\": 1}' localhost:26657\n\n## JSONRPC/websockets\n\nIn Tendermint v0.35 and earlier, JSONRPC requests can be also made via\nwebsocket.  The websocket interface is deprecated in Tendermint v0.36, and\nwill be removed in v0.37.\n\nThe websocket endpoint is at `/websocket`, e.g. `localhost:26657/websocket`.\nThe RPC methods for event subscription (`subscribe`, `unsubscribe`, and\n`unsubscribe_all`) are only available via websockets.\n\nExample using https://github.com/hashrocket/ws:\n\n    ws ws://localhost:26657/websocket\n    > { \"jsonrpc\": \"2.0\", \"method\": \"subscribe\", \"params\": [\"tm.event='NewBlock'\"], \"id\": 1 }\n"
+  description: 'Tendermint supports the following RPC protocols:
+
+
+    * URI over HTTP
+
+    * JSON-RPC 2.0 over HTTP
+
+    * JSON-RPC 2.0 over websockets (deprecated)
+
+
+    ## Configuration
+
+
+    RPC can be configured by tuning parameters under `[rpc]` table in the
+
+    `$TMHOME/config/config.toml` file or by using the `--rpc.X` command-line
+
+    flags.'
   version: Master
   license:
     name: Apache 2.0
@@ -20,7 +37,7 @@ tags:
 paths:
   /broadcast_tx_sync:
     get:
-      summary: Returns with the response from CheckTx. Does not wait for DeliverTx result.
+      summary: Returns with the response from CheckTx. Does not wait for DeliverTx result
       deprecated: true
       tags:
       - Tx
@@ -38,16 +55,14 @@ paths:
 
         when the transaction is included in a block, check for the transaction
 
-        event using JSON-RPC.  See
+        event using JSON-RPC. See
 
         https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
 
 
         See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
 
-        for formatting/encoding rules.
-
-        '
+        for formatting/encoding rules.'
       parameters:
       - in: query
         name: tx
@@ -71,7 +86,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
   /broadcast_tx:
     get:
-      summary: Returns with the response from CheckTx. Does not wait for DeliverTx result.
+      summary: Returns with the response from CheckTx. Does not wait for DeliverTx result
       tags:
       - Tx
       operationId: broadcast_tx
@@ -81,16 +96,14 @@ paths:
 
         when the transaction is included in a block, check for the transaction
 
-        event using JSON-RPC.  See
+        event using JSON-RPC. See
 
         https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
 
 
         See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
 
-        for formatting/encoding rules.
-
-        '
+        for formatting/encoding rules.'
       parameters:
       - in: query
         name: tx
@@ -114,7 +127,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
   /broadcast_tx_async:
     get:
-      summary: Returns right away, with no response. Does not wait for CheckTx nor DeliverTx results.
+      summary: Returns right away, with no response.
       deprecated: true
       tags:
       - Tx
@@ -126,20 +139,18 @@ paths:
 
         This method submits the transaction and returns immediately without
 
-        waiting for the transaction to be checked (CheckTx) or committed.  Too
+        waiting for the transaction to be checked (CheckTx) or committed. Too
 
         know when the transaction is included in a block, you can check for the
 
-        transaction event using JSON-RPC.  See
+        transaction event using JSON-RPC. See
 
         https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
 
 
         See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
 
-        for formatting/encoding rules.
-
-        '
+        for formatting/encoding rules.'
       parameters:
       - in: query
         name: tx
@@ -163,7 +174,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
   /broadcast_tx_commit:
     get:
-      summary: Returns with the responses from CheckTx and DeliverTx.
+      summary: Returns with the responses from CheckTx and DeliverTx
       deprecated: true
       tags:
       - Tx
@@ -172,9 +183,9 @@ paths:
 
         a best effort to wait for it to be committed into a block before
 
-        returning.  It will report an error if the request times out before the
+        returning. It will report an error if the request times out before the
 
-        transaction commits.  If CheckTx or DeliverTx fails, the RPC will
+        transaction commits. If CheckTx or DeliverTx fails, the RPC will
 
         succeed and report the failing (non-zero) ABCI result code.
 
@@ -186,16 +197,14 @@ paths:
 
         To know when a transaction is included in a block, check for the
 
-        transaction event using JSON-RPC.  See
+        transaction event using JSON-RPC. See
 
         https://docs.tendermint.com/master/app-dev/subscribing-to-events-via-websocket.html
 
 
         See https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
 
-        for formatting/encoding rules.
-
-        '
+        for formatting/encoding rules.'
       parameters:
       - in: query
         name: tx
@@ -219,7 +228,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
   /check_tx:
     get:
-      summary: Checks the transaction without executing it.
+      summary: Checks the transaction without executing it
       tags:
       - Tx
       operationId: check_tx
@@ -230,9 +239,7 @@ paths:
 
         https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#formatting
 
-        for formatting/encoding rules.
-
-        '
+        for formatting/encoding rules.'
       parameters:
       - in: query
         name: tx
@@ -256,109 +263,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    BroadcastTxResponse:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      - error
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-        id:
-          type: integer
-          example: 0
-        result:
-          required:
-          - code
-          - data
-          - log
-          - hash
-          properties:
-            code:
-              type: string
-              example: '0'
-            data:
-              type: string
-              example: ''
-            log:
-              type: string
-              example: ''
-            codespace:
-              type: string
-              example: ibc
-            hash:
-              type: string
-              example: 0D33F2F03A5234F38706E43004489E061AC40A2E
-          type: object
-        error:
-          type: string
-          example: ''
-    BroadcastTxCommitResponse:
-      type: object
-      required:
-      - error
-      - result
-      - id
-      - jsonrpc
-      properties:
-        error:
-          type: string
-          example: ''
-        result:
-          required:
-          - height
-          - hash
-          - deliver_tx
-          - check_tx
-          properties:
-            height:
-              type: string
-              example: '26682'
-            hash:
-              type: string
-              example: 75CA0F856A4DA078FC4911580360E70CEFB2EBEE
-            deliver_tx:
-              required:
-              - log
-              - data
-              - code
-              properties:
-                log:
-                  type: string
-                  example: ''
-                data:
-                  type: string
-                  example: ''
-                code:
-                  type: string
-                  example: '0'
-              type: object
-            check_tx:
-              required:
-              - log
-              - data
-              - code
-              properties:
-                log:
-                  type: string
-                  example: ''
-                data:
-                  type: string
-                  example: ''
-                code:
-                  type: string
-                  example: '0'
-              type: object
-          type: object
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
     CheckTxResponse:
       type: object
       required:
@@ -418,6 +331,55 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
+    BroadcastTxResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      - error
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          required:
+          - code
+          - data
+          - log
+          - hash
+          properties:
+            code:
+              type: string
+              example: '0'
+            data:
+              type: string
+              example: ''
+            log:
+              type: string
+              example: ''
+            codespace:
+              type: string
+              example: ibc
+            hash:
+              type: string
+              example: 0D33F2F03A5234F38706E43004489E061AC40A2E
+          type: object
+        error:
+          type: string
+          example: ''
     Event:
       type: object
       properties:
@@ -430,18 +392,63 @@ components:
         index:
           type: boolean
           example: false
-    ErrorResponse:
-      description: Error Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          error:
-            type: string
-            example: Description of failure
-    JSONRPC:
+    BroadcastTxCommitResponse:
       type: object
+      required:
+      - error
+      - result
+      - id
+      - jsonrpc
       properties:
+        error:
+          type: string
+          example: ''
+        result:
+          required:
+          - height
+          - hash
+          - deliver_tx
+          - check_tx
+          properties:
+            height:
+              type: string
+              example: '26682'
+            hash:
+              type: string
+              example: 75CA0F856A4DA078FC4911580360E70CEFB2EBEE
+            deliver_tx:
+              required:
+              - log
+              - data
+              - code
+              properties:
+                log:
+                  type: string
+                  example: ''
+                data:
+                  type: string
+                  example: ''
+                code:
+                  type: string
+                  example: '0'
+              type: object
+            check_tx:
+              required:
+              - log
+              - data
+              - code
+              properties:
+                log:
+                  type: string
+                  example: ''
+                data:
+                  type: string
+                  example: ''
+                code:
+                  type: string
+                  example: '0'
+              type: object
+          type: object
         id:
           type: integer
           example: 0

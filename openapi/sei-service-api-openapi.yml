@@ -8,7 +8,7 @@ tags:
 paths:
   /cosmos/base/tendermint/v1beta1/blocks/latest:
     get:
-      summary: GetLatestBlock returns the latest block.
+      summary: GetLatestBlock returns the latest block
       operationId: CosmosBaseTendermintV1Beta1GetLatestBlock
       responses:
         '200':
@@ -603,7 +603,7 @@ paths:
       - Service
   /cosmos/base/tendermint/v1beta1/blocks/{height}:
     get:
-      summary: GetBlockByHeight queries block for given height.
+      summary: GetBlockByHeight queries block for given height
       operationId: CosmosBaseTendermintV1Beta1GetBlockByHeight
       responses:
         '200':
@@ -1205,7 +1205,7 @@ paths:
       - Service
   /cosmos/base/tendermint/v1beta1/node_info:
     get:
-      summary: GetNodeInfo queries the current node info.
+      summary: GetNodeInfo queries the current node info
       operationId: CosmosBaseTendermintV1Beta1GetNodeInfo
       responses:
         '200':
@@ -1311,7 +1311,7 @@ paths:
       - Service
   /cosmos/base/tendermint/v1beta1/syncing:
     get:
-      summary: GetSyncing queries node syncing.
+      summary: GetSyncing queries node syncing
       operationId: CosmosBaseTendermintV1Beta1GetSyncing
       responses:
         '200':
@@ -1350,7 +1350,7 @@ paths:
       - Service
   /cosmos/base/tendermint/v1beta1/validatorsets/latest:
     get:
-      summary: GetLatestValidatorSet queries latest validator-set.
+      summary: GetLatestValidatorSet queries latest validator-set
       operationId: CosmosBaseTendermintV1Beta1GetLatestValidatorSet
       responses:
         '200':
@@ -1481,7 +1481,7 @@ paths:
       - Service
   /cosmos/base/tendermint/v1beta1/validatorsets/{height}:
     get:
-      summary: GetValidatorSetByHeight queries validator-set at a given height.
+      summary: GetValidatorSetByHeight queries validator-set at a given height
       operationId: CosmosBaseTendermintV1Beta1GetValidatorSetByHeight
       responses:
         '200':
@@ -1618,7 +1618,7 @@ paths:
       - Service
   /cosmos/tx/v1beta1/simulate:
     post:
-      summary: Simulate simulates executing a transaction for estimating gas usage.
+      summary: Simulate simulates executing a transaction for estimating gas usage
       operationId: CosmosTxV1Beta1Simulate
       responses:
         '200':
@@ -1719,7 +1719,7 @@ paths:
         required: true
   /cosmos/tx/v1beta1/txs:
     get:
-      summary: GetTxsEvent fetches txs by event.
+      summary: GetTxsEvent fetches txs by event
       operationId: CosmosTxV1Beta1GetTxsEvent
       responses:
         '200':
@@ -1827,7 +1827,7 @@ paths:
       tags:
       - Service
     post:
-      summary: BroadcastTx broadcast transaction.
+      summary: BroadcastTx broadcast transaction
       operationId: CosmosTxV1Beta1BroadcastTx
       responses:
         '200':
@@ -2016,7 +2016,7 @@ paths:
         required: true
   /cosmos/tx/v1beta1/txs/block/{height}:
     get:
-      summary: GetBlockWithTxs fetches a block with decoded txs.
+      summary: GetBlockWithTxs fetches a block with decoded txs
       description: 'Since: cosmos-sdk 0.45.2'
       operationId: CosmosTxV1Beta1GetBlockWithTxs
       responses:
@@ -2112,7 +2112,7 @@ paths:
       - Service
   /cosmos/tx/v1beta1/txs/{hash}:
     get:
-      summary: GetTx fetches a tx by hash.
+      summary: GetTx fetches a tx by hash
       operationId: CosmosTxV1Beta1GetTx
       responses:
         '200':
@@ -2154,6 +2154,177 @@ paths:
       - Service
 components:
   schemas:
+    cosmos.tx.v1beta1.GetTxResponse:
+      type: object
+      properties:
+        tx:
+          $ref: '#/components/schemas/cosmos.tx.v1beta1.Tx'
+          description: tx is the queried transaction.
+        tx_response:
+          description: tx_response is the queried TxResponses.
+          type: object
+          properties:
+            height:
+              type: string
+              format: int64
+              title: The block height
+            txhash:
+              type: string
+              description: The transaction hash.
+            codespace:
+              type: string
+              title: Namespace for the Code
+            code:
+              type: integer
+              format: int64
+              description: Response code.
+            data:
+              type: string
+              description: Result bytes, if any.
+            raw_log:
+              type: string
+              description: 'The output of the application''s logger (raw string). May be
+
+                non-deterministic.'
+            logs:
+              type: array
+              items:
+                type: object
+                properties:
+                  msg_index:
+                    type: integer
+                    format: int64
+                  log:
+                    type: string
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        attributes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            description: 'Attribute defines an attribute wrapper where the key and value are
+
+                              strings instead of raw bytes.'
+                      description: 'StringEvent defines en Event object wrapper where all the attributes
+
+                        contain key/value pairs that are strings instead of raw bytes.'
+                    description: 'Events contains a slice of Event objects that were emitted during some
+
+                      execution.'
+                description: ABCIMessageLog defines a structure containing an indexed tx ABCI message log.
+              description: The output of the application's logger (typed). May be non-deterministic.
+            info:
+              type: string
+              description: Additional information. May be non-deterministic.
+            gas_wanted:
+              type: string
+              format: int64
+              description: Amount of gas requested for transaction.
+            gas_used:
+              type: string
+              format: int64
+              description: Amount of gas consumed by transaction.
+            tx:
+              description: The request transaction bytes.
+              type: object
+              properties:
+                '@type':
+                  type: string
+                  description: "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+              additionalProperties: {}
+            timestamp:
+              type: string
+              description: 'Time of the previous block. For heights > 1, it''s the weighted median of
+
+                the timestamps of the valid votes in the block.LastCommit. For height == 1,
+
+                it''s genesis time.'
+            events:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        value:
+                          type: string
+                        index:
+                          type: boolean
+                          title: nondeterministic
+                      description: EventAttribute is a single key-value pair, associated with an event.
+                description: 'Event allows application developers to attach additional information to
+
+                  ResponseFinalizeBlock, ResponseDeliverTx, ExecTxResult
+
+                  Later, transactions may be queried using these events.'
+              description: 'Events defines all the events emitted by processing a transaction. Note,
+
+                these events include those emitted by processing all the messages and those
+
+                emitted from the ante handler. Whereas Logs contains the events, with
+
+                additional metadata, emitted only by processing the messages.
+
+
+                Since: cosmos-sdk 0.42.11, 0.44.5, 0.45'
+      description: GetTxResponse is the response type for the Service.GetTx method.
+    cosmos.tx.v1beta1.SimulateRequest:
+      type: object
+      properties:
+        tx:
+          $ref: '#/components/schemas/cosmos.tx.v1beta1.Tx'
+          description: 'tx is the transaction to simulate.
+
+            Deprecated. Send raw tx bytes instead.'
+        tx_bytes:
+          type: string
+          format: byte
+          description: 'tx_bytes is the raw transaction.
+
+
+            Since: cosmos-sdk 0.43'
+      description: 'SimulateRequest is the request type for the Service.Simulate
+
+        RPC method.'
+    cosmos.tx.v1beta1.ModeInfo:
+      type: object
+      properties:
+        single:
+          title: single represents a single signer
+          type: object
+          properties:
+            mode:
+              title: mode is the signing mode of the single signer
+              type: string
+              enum:
+              - SIGN_MODE_UNSPECIFIED
+              - SIGN_MODE_DIRECT
+              - SIGN_MODE_TEXTUAL
+              - SIGN_MODE_LEGACY_AMINO_JSON
+              - SIGN_MODE_EIP_191
+              default: SIGN_MODE_UNSPECIFIED
+              description: "SignMode represents a signing mode with its own security guarantees.\n\n - SIGN_MODE_UNSPECIFIED: SIGN_MODE_UNSPECIFIED specifies an unknown signing mode and will be\nrejected\n - SIGN_MODE_DIRECT: SIGN_MODE_DIRECT specifies a signing mode which uses SignDoc and is\nverified with raw bytes from Tx\n - SIGN_MODE_TEXTUAL: SIGN_MODE_TEXTUAL is a future signing mode that will verify some\nhuman-readable textual representation on top of the binary representation\nfrom SIGN_MODE_DIRECT\n - SIGN_MODE_LEGACY_AMINO_JSON: SIGN_MODE_LEGACY_AMINO_JSON is a backwards compatibility mode which uses\nAmino JSON and will be removed in the future\n - SIGN_MODE_EIP_191: SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos\nSDK. Ref: https://eips.ethereum.org/EIPS/eip-191\n\nCurrently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,\nbut is not implemented on the SDK by default. To enable EIP-191, you need\nto pass a custom `TxConfig` that has an implementation of\n`SignModeHandler` for EIP-191. The SDK may decide to fully support\nEIP-191 in the future.\n\nSince: cosmos-sdk 0.45.2"
+        multi:
+          $ref: '#/components/schemas/cosmos.tx.v1beta1.ModeInfo.Multi'
+          title: multi represents a nested multisig signer
+      description: ModeInfo describes the signing mode of a single or nested multisig signer.
     cosmos.tx.v1beta1.GetTxsEventResponse:
       type: object
       properties:
@@ -2898,270 +3069,37 @@ components:
 
 
         Since: cosmos-sdk 0.45.2'
-    cosmos.tx.v1beta1.ModeInfo.Multi:
+    cosmos.tx.v1beta1.SignerInfo:
       type: object
       properties:
-        bitarray:
-          title: bitarray specifies which keys within the multisig are signing
+        public_key:
+          description: 'public_key is the public key of the signer. It is optional for accounts
+
+            that already exist in state. If unset, the verifier can use the required \
+
+            signer address for this position and lookup the public key.'
           type: object
           properties:
-            extra_bits_stored:
-              type: integer
-              format: int64
-            elems:
+            '@type':
               type: string
-              format: byte
-          description: 'CompactBitArray is an implementation of a space efficient bit array.
+              description: "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+          additionalProperties: {}
+        mode_info:
+          $ref: '#/components/schemas/cosmos.tx.v1beta1.ModeInfo'
+          title: 'mode_info describes the signing mode of the signer and is a nested
 
-            This is used to ensure that the encoded data takes up a minimal amount of
-
-            space after proto encoding.
-
-            This is not thread safe, and is not intended for concurrent usage.'
-        mode_infos:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/cosmos.tx.v1beta1.ModeInfo'
-          title: 'mode_infos is the corresponding modes of the signers of the multisig
-
-            which could include nested multisig public keys'
-      title: Multi is the mode info for a multisig public key
-    cosmos.tx.v1beta1.ModeInfo:
-      type: object
-      properties:
-        single:
-          title: single represents a single signer
-          type: object
-          properties:
-            mode:
-              title: mode is the signing mode of the single signer
-              type: string
-              enum:
-              - SIGN_MODE_UNSPECIFIED
-              - SIGN_MODE_DIRECT
-              - SIGN_MODE_TEXTUAL
-              - SIGN_MODE_LEGACY_AMINO_JSON
-              - SIGN_MODE_EIP_191
-              default: SIGN_MODE_UNSPECIFIED
-              description: "SignMode represents a signing mode with its own security guarantees.\n\n - SIGN_MODE_UNSPECIFIED: SIGN_MODE_UNSPECIFIED specifies an unknown signing mode and will be\nrejected\n - SIGN_MODE_DIRECT: SIGN_MODE_DIRECT specifies a signing mode which uses SignDoc and is\nverified with raw bytes from Tx\n - SIGN_MODE_TEXTUAL: SIGN_MODE_TEXTUAL is a future signing mode that will verify some\nhuman-readable textual representation on top of the binary representation\nfrom SIGN_MODE_DIRECT\n - SIGN_MODE_LEGACY_AMINO_JSON: SIGN_MODE_LEGACY_AMINO_JSON is a backwards compatibility mode which uses\nAmino JSON and will be removed in the future\n - SIGN_MODE_EIP_191: SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos\nSDK. Ref: https://eips.ethereum.org/EIPS/eip-191\n\nCurrently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,\nbut is not implemented on the SDK by default. To enable EIP-191, you need\nto pass a custom `TxConfig` that has an implementation of\n`SignModeHandler` for EIP-191. The SDK may decide to fully support\nEIP-191 in the future.\n\nSince: cosmos-sdk 0.45.2"
-        multi:
-          $ref: '#/components/schemas/cosmos.tx.v1beta1.ModeInfo.Multi'
-          title: multi represents a nested multisig signer
-      description: ModeInfo describes the signing mode of a single or nested multisig signer.
-    cosmos.tx.v1beta1.GetTxResponse:
-      type: object
-      properties:
-        tx:
-          $ref: '#/components/schemas/cosmos.tx.v1beta1.Tx'
-          description: tx is the queried transaction.
-        tx_response:
-          description: tx_response is the queried TxResponses.
-          type: object
-          properties:
-            height:
-              type: string
-              format: int64
-              title: The block height
-            txhash:
-              type: string
-              description: The transaction hash.
-            codespace:
-              type: string
-              title: Namespace for the Code
-            code:
-              type: integer
-              format: int64
-              description: Response code.
-            data:
-              type: string
-              description: Result bytes, if any.
-            raw_log:
-              type: string
-              description: 'The output of the application''s logger (raw string). May be
-
-                non-deterministic.'
-            logs:
-              type: array
-              items:
-                type: object
-                properties:
-                  msg_index:
-                    type: integer
-                    format: int64
-                  log:
-                    type: string
-                  events:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                        attributes:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              key:
-                                type: string
-                              value:
-                                type: string
-                            description: 'Attribute defines an attribute wrapper where the key and value are
-
-                              strings instead of raw bytes.'
-                      description: 'StringEvent defines en Event object wrapper where all the attributes
-
-                        contain key/value pairs that are strings instead of raw bytes.'
-                    description: 'Events contains a slice of Event objects that were emitted during some
-
-                      execution.'
-                description: ABCIMessageLog defines a structure containing an indexed tx ABCI message log.
-              description: The output of the application's logger (typed). May be non-deterministic.
-            info:
-              type: string
-              description: Additional information. May be non-deterministic.
-            gas_wanted:
-              type: string
-              format: int64
-              description: Amount of gas requested for transaction.
-            gas_used:
-              type: string
-              format: int64
-              description: Amount of gas consumed by transaction.
-            tx:
-              description: The request transaction bytes.
-              type: object
-              properties:
-                '@type':
-                  type: string
-                  description: "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
-              additionalProperties: {}
-            timestamp:
-              type: string
-              description: 'Time of the previous block. For heights > 1, it''s the weighted median of
-
-                the timestamps of the valid votes in the block.LastCommit. For height == 1,
-
-                it''s genesis time.'
-            events:
-              type: array
-              items:
-                type: object
-                properties:
-                  type:
-                    type: string
-                  attributes:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                        value:
-                          type: string
-                        index:
-                          type: boolean
-                          title: nondeterministic
-                      description: EventAttribute is a single key-value pair, associated with an event.
-                description: 'Event allows application developers to attach additional information to
-
-                  ResponseFinalizeBlock, ResponseDeliverTx, ExecTxResult
-
-                  Later, transactions may be queried using these events.'
-              description: 'Events defines all the events emitted by processing a transaction. Note,
-
-                these events include those emitted by processing all the messages and those
-
-                emitted from the ante handler. Whereas Logs contains the events, with
-
-                additional metadata, emitted only by processing the messages.
-
-
-                Since: cosmos-sdk 0.42.11, 0.44.5, 0.45'
-      description: GetTxResponse is the response type for the Service.GetTx method.
-    cosmos.tx.v1beta1.AuthInfo:
-      type: object
-      properties:
-        signer_infos:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/cosmos.tx.v1beta1.SignerInfo'
-          description: 'signer_infos defines the signing modes for the required signers. The number
-
-            and order of elements must match the required signers from TxBody''s
-
-            messages. The first element is the primary signer and the one which pays
-
-            the fee.'
-        fee:
-          description: 'Fee is the fee and gas limit for the transaction. The first signer is the
-
-            primary signer and the one which pays the fee. The fee can be calculated
-
-            based on the cost of evaluating the body and doing signature verification
-
-            of the signers. This can be estimated via simulation.'
-          type: object
-          properties:
-            amount:
-              type: array
-              items:
-                type: object
-                properties:
-                  denom:
-                    type: string
-                  amount:
-                    type: string
-                description: 'Coin defines a token with a denomination and an amount.
-
-
-                  NOTE: The amount field is an Int which implements the custom method
-
-                  signatures required by gogoproto.'
-              title: amount is the amount of coins to be paid as a fee
-            gas_limit:
-              type: string
-              format: uint64
-              title: 'gas_limit is the maximum gas that can be used in transaction processing
-
-                before an out of gas error occurs'
-            payer:
-              type: string
-              description: 'if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
-
-                the payer must be a tx signer (and thus have signed this field in AuthInfo).
-
-                setting this field does *not* change the ordering of required signers for the transaction.'
-            granter:
-              type: string
-              title: 'if set, the fee payer (either the first signer or the value of the payer field) requests that a fee grant be used
-
-                to pay fees instead of the fee payer''s own balance. If an appropriate fee grant does not exist or the chain does
-
-                not support fee grants, this will fail'
-      description: 'AuthInfo describes the fee and signer modes that are used to sign a
-
-        transaction.'
-    cosmos.tx.v1beta1.SimulateRequest:
-      type: object
-      properties:
-        tx:
-          $ref: '#/components/schemas/cosmos.tx.v1beta1.Tx'
-          description: 'tx is the transaction to simulate.
-
-            Deprecated. Send raw tx bytes instead.'
-        tx_bytes:
+            structure to support nested multisig pubkey''s'
+        sequence:
           type: string
-          format: byte
-          description: 'tx_bytes is the raw transaction.
+          format: uint64
+          description: 'sequence is the sequence of the account, which describes the
 
+            number of committed transactions signed by a given address. It is used to
 
-            Since: cosmos-sdk 0.43'
-      description: 'SimulateRequest is the request type for the Service.Simulate
+            prevent replay attacks.'
+      description: 'SignerInfo describes the public key and signing mode of a single top-level
 
-        RPC method.'
+        signer.'
     cosmos.tx.v1beta1.Tx:
       type: object
       properties:
@@ -3252,34 +3190,96 @@ components:
 
             public key and signing mode by position.'
       description: Tx is the standard type used for broadcasting transactions.
-    cosmos.tx.v1beta1.SignerInfo:
+    cosmos.tx.v1beta1.AuthInfo:
       type: object
       properties:
-        public_key:
-          description: 'public_key is the public key of the signer. It is optional for accounts
+        signer_infos:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/cosmos.tx.v1beta1.SignerInfo'
+          description: 'signer_infos defines the signing modes for the required signers. The number
 
-            that already exist in state. If unset, the verifier can use the required \
+            and order of elements must match the required signers from TxBody''s
 
-            signer address for this position and lookup the public key.'
+            messages. The first element is the primary signer and the one which pays
+
+            the fee.'
+        fee:
+          description: 'Fee is the fee and gas limit for the transaction. The first signer is the
+
+            primary signer and the one which pays the fee. The fee can be calculated
+
+            based on the cost of evaluating the body and doing signature verification
+
+            of the signers. This can be estimated via simulation.'
           type: object
           properties:
-            '@type':
+            amount:
+              type: array
+              items:
+                type: object
+                properties:
+                  denom:
+                    type: string
+                  amount:
+                    type: string
+                description: 'Coin defines a token with a denomination and an amount.
+
+
+                  NOTE: The amount field is an Int which implements the custom method
+
+                  signatures required by gogoproto.'
+              title: amount is the amount of coins to be paid as a fee
+            gas_limit:
               type: string
-              description: "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
-          additionalProperties: {}
-        mode_info:
-          $ref: '#/components/schemas/cosmos.tx.v1beta1.ModeInfo'
-          title: 'mode_info describes the signing mode of the signer and is a nested
+              format: uint64
+              title: 'gas_limit is the maximum gas that can be used in transaction processing
 
-            structure to support nested multisig pubkey''s'
-        sequence:
-          type: string
-          format: uint64
-          description: 'sequence is the sequence of the account, which describes the
+                before an out of gas error occurs'
+            payer:
+              type: string
+              description: 'if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
 
-            number of committed transactions signed by a given address. It is used to
+                the payer must be a tx signer (and thus have signed this field in AuthInfo).
 
-            prevent replay attacks.'
-      description: 'SignerInfo describes the public key and signing mode of a single top-level
+                setting this field does *not* change the ordering of required signers for the transaction.'
+            granter:
+              type: string
+              title: 'if set, the fee payer (either the first signer or the value of the payer field) requests that a fee grant be used
 
-        signer.'
+                to pay fees instead of the fee payer''s own balance. If an appropriate fee grant does not exist or the chain does
+
+                not support fee grants, this will fail'
+      description: 'AuthInfo describes the fee and signer modes that are used to sign a
+
+        transaction.'
+    cosmos.tx.v1beta1.ModeInfo.Multi:
+      type: object
+      properties:
+        bitarray:
+          title: bitarray specifies which keys within the multisig are signing
+          type: object
+          properties:
+            extra_bits_stored:
+              type: integer
+              format: int64
+            elems:
+              type: string
+              format: byte
+          description: 'CompactBitArray is an implementation of a space efficient bit array.
+
+            This is used to ensure that the encoded data takes up a minimal amount of
+
+            space after proto encoding.
+
+            This is not thread safe, and is not intended for concurrent usage.'
+        mode_infos:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/cosmos.tx.v1beta1.ModeInfo'
+          title: 'mode_infos is the corresponding modes of the signers of the multisig
+
+            which could include nested multisig public keys'
+      title: Multi is the mode info for a multisig public key

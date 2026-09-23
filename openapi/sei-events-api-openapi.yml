@@ -4,7 +4,24 @@ info:
   contact:
     name: Tendermint RPC
     url: https://github.com/tendermint/tendermint/issues/new/choose
-  description: "Tendermint supports the following RPC protocols:\n\n* URI over HTTP\n* JSON-RPC 2.0 over HTTP\n* JSON-RPC 2.0 over websockets (deprecated)\n\n## Configuration\n\nRPC can be configured by tuning parameters under `[rpc]` table in the\n`$TMHOME/config/config.toml` file or by using the `--rpc.X` command-line\nflags.\n\nDefault rpc listen address is `tcp://0.0.0.0:26657`.\nTo set another address, set the `laddr` config parameter to desired value.\nCORS (Cross-Origin Resource Sharing) can be enabled by setting\n`cors_allowed_origins`, `cors_allowed_methods`, `cors_allowed_headers`\nconfig parameters.\n\n## Arguments\n\nArguments which expect strings or byte arrays may be passed as quoted\nstrings, like `\"abc\"` or as `0x`-prefixed strings, like `0x616263`.\n\n## URI/HTTP\n\nA GET request with arguments encoded as query parameters:\n\n    curl localhost:26657/block?height=5\n\n## JSONRPC/HTTP\n\nJSONRPC requests can be POST'd to the root RPC endpoint via HTTP.\n\n    curl --header \"Content-Type: application/json\" --request POST --data '{\"method\": \"block\", \"params\": [\"5\"], \"id\": 1}' localhost:26657\n\n## JSONRPC/websockets\n\nIn Tendermint v0.35 and earlier, JSONRPC requests can be also made via\nwebsocket.  The websocket interface is deprecated in Tendermint v0.36, and\nwill be removed in v0.37.\n\nThe websocket endpoint is at `/websocket`, e.g. `localhost:26657/websocket`.\nThe RPC methods for event subscription (`subscribe`, `unsubscribe`, and\n`unsubscribe_all`) are only available via websockets.\n\nExample using https://github.com/hashrocket/ws:\n\n    ws ws://localhost:26657/websocket\n    > { \"jsonrpc\": \"2.0\", \"method\": \"subscribe\", \"params\": [\"tm.event='NewBlock'\"], \"id\": 1 }\n"
+  description: 'Tendermint supports the following RPC protocols:
+
+
+    * URI over HTTP
+
+    * JSON-RPC 2.0 over HTTP
+
+    * JSON-RPC 2.0 over websockets (deprecated)
+
+
+    ## Configuration
+
+
+    RPC can be configured by tuning parameters under `[rpc]` table in the
+
+    `$TMHOME/config/config.toml` file or by using the `--rpc.X` command-line
+
+    flags.'
   version: Master
   license:
     name: Apache 2.0
@@ -20,11 +37,89 @@ tags:
 paths:
   /events:
     get:
-      summary: Fetch events posted by the consensus node.
+      summary: Fetch events posted by the consensus node
       tags:
       - Events
       operationId: events
-      description: "Fetch a batch of events posted by the consensus node and matching a\nspecified query string.\n\nThe query grammar is defined in [pubsub/query/syntax](https://godoc.org/github.com/tendermint/tendermint/internal/pubsub/query/syntax).\nAn empty query matches all events; otherwise a query comprises one or\nmore terms comparing event metadata to target values. For example, to\nselect new block events:\n\n    tm.event = 'NewBlock'\n\nMultiple terms can be combined with AND, for example to match the\ntransaction event with a given hash, use:\n\n    tm.event = 'Tx' AND tx.hash = 'EA7B33F'\n\nThe comparison operators include `=`, `<`, `<=`, `>`, `>=`, and\n`CONTAINS`. Operands may be strings (in single quotes), numbers, dates,\nor timestamps. In addition, the `EXISTS` operator allows you to check\nfor the presence of an attribute regardless of its value.\n\nTendermint defines a `tm.event` attribute for all events. Transactions\nare also assigned `tx.hash` and `tx.height` attributes. Other attributes\nare provided by the application as ABCI Event records. The name of the\nevent in the query is formed by combining the type and attribute key\nwith a period. For example, given:\n\n    []abci.Event{{\n        Type: \"reward\",\n        Attributes: []abci.EventAttribute{\n            {Key: \"address\", Value: \"cosmos1xyz012pdq\"},\n            {Key: \"amount\", Value: \"45.62\"},\n            {Key: \"balance\", Value: \"100.390001\"},\n        },\n    }}\n\nthe query may refer to the names`\"reward.address`,`\"reward.amount`, and\n`reward.balance`, as in:\n\n    reward.address EXISTS AND reward.balance > 45\n\nThe node maintains a log of all events within an operator-defined time\nwindow. The /events method returns the most recent items from the log\nthat match the query. Each item returned includes a cursor that marks\nits location in the log. Cursors can be passed via the `before` and\n`after` parameters to fetch events earlier in the log.\n"
+      description: 'Fetch a batch of events posted by the consensus node and matching a
+
+        specified query string.
+
+
+        The query grammar is defined in pubsub/query/syntax.
+
+        An empty query matches all events; otherwise a query comprises one or
+
+        more terms comparing event metadata to target values. For example, to
+
+        select new block events:
+
+
+        tm.event = ''NewBlock''
+
+
+        Multiple terms can be combined with AND, for example to match the
+
+        transaction event with a given hash, use:
+
+
+        tm.event = ''Tx'' AND tx.hash = ''EA7B33F''
+
+
+        The comparison operators include `=`, ``, `>=`, and
+
+        `CONTAINS`. Operands may be strings (in single quotes), numbers, dates,
+
+        or timestamps. In addition, the `EXISTS` operator allows you to check
+
+        for the presence of an attribute regardless of its value.
+
+
+        Tendermint defines a `tm.event` attribute for all events. Transactions
+
+        are also assigned `tx.hash` and `tx.height` attributes. Other attributes
+
+        are provided by the application as ABCI Event records. The name of the
+
+        event in the query is formed by combining the type and attribute key
+
+        with a period. For example, given:
+
+
+        []abci.Event{{
+
+        Type: "reward",
+
+        Attributes: []abci.EventAttribute{
+
+        {Key: "address", Value: "cosmos1xyz012pdq"},
+
+        {Key: "amount", Value: "45.62"},
+
+        {Key: "balance", Value: "100.390001"},
+
+        },
+
+        }}
+
+
+        the query may refer to the names`"reward.address`,`"reward.amount`, and
+
+        `reward.balance`, as in:
+
+
+        reward.address EXISTS AND reward.balance > 45
+
+
+        The node maintains a log of all events within an operator-defined time
+
+        window. The /events method returns the most recent items from the log
+
+        that match the query. Each item returned includes a cursor that marks
+
+        its location in the log. Cursors can be passed via the `before` and
+
+        `after` parameters to fetch events earlier in the log.'
       parameters:
       - in: query
         name: filter
@@ -65,11 +160,235 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
   /subscribe:
     get:
-      summary: Subscribe for events via WebSocket.
+      summary: Subscribe for events via WebSocket
       tags:
       - Events
       operationId: subscribe
-      description: "To tell which events you want, you need to provide a query. query is a\nstring, which has a form: \"condition AND condition ...\" (no OR at the\nmoment). condition has a form: \"key operation operand\". key is a string with\na restricted set of possible symbols ( \\t\\n\\r\\\\()\"'=>< are not allowed).\noperation can be \"=\", \"<\", \"<=\", \">\", \">=\", \"CONTAINS\" AND \"EXISTS\". operand\ncan be a string (escaped with single quotes), number, date or time.\n\nExamples:\n      tm.event = 'NewBlock'               # new blocks\n      tm.event = 'CompleteProposal'       # node got a complete proposal\n      tm.event = 'Tx' AND tx.hash = 'XYZ' # single transaction\n      tm.event = 'Tx' AND tx.height = 5   # all txs of the fifth block\n      tx.height = 5                       # all txs of the fifth block\n\nTendermint provides a few predefined keys: tm.event, tx.hash and tx.height.\nNote for transactions, you can define additional keys by providing events with\nDeliverTx response.\n\nimport (\n    abci \"github.com/tendermint/tendermint/abci/types\"\n    \"github.com/tendermint/tendermint/libs/pubsub/query\"\n)\n\nabci.ResponseDeliverTx{\n  Events: []abci.Event{\n      {\n          Type: \"rewards.withdraw\",\n          Attributes: []abci.EventAttribute{\n              {Key: \"address\", Value: \"AddrA\", Index: true},\n              {Key: \"source\", Value: \"SrcX\", Index: true},\n              {Key: \"amount\", Value: \"...\", Index: true},\n              {Key: \"balance\", Value: \"...\", Index: true},\n          },\n      },\n      {\n          Type: \"rewards.withdraw\",\n          Attributes: []abci.EventAttribute{\n              {Key: \"address\", Value: \"AddrB\", Index: true},\n              {Key: \"source\", Value: \"SrcY\", Index: true},\n              {Key: \"amount\", Value: \"...\", Index: true},\n              {Key: \"balance\", Value: \"...\", Index: true},\n          },\n      },\n      {\n          Type: \"transfer\",\n          Attributes: []abci.EventAttribute{\n              {Key: \"sender\", Value: \"AddrC\", Index: true},\n              {Key: \"recipient\", Value: \"AddrD\", Index: true},\n              {Key: \"amount\", Value: \"...\", Index: true},\n          },\n      },\n  },\n}\n\nAll events are indexed by a composite key of the form {eventType}.{evenAttrKey}.\nIn the above examples, the following keys would be indexed:\n   - rewards.withdraw.address\n   - rewards.withdraw.source\n   - rewards.withdraw.amount\n   - rewards.withdraw.balance\n   - transfer.sender\n   - transfer.recipient\n   - transfer.amount\n\nMultiple event types with duplicate keys are allowed and are meant to\ncategorize unique and distinct events. In the above example, all events\nindexed under the key `rewards.withdraw.address` will have the following\nvalues stored and queryable:\n\n   - AddrA\n   - AddrB\n\nTo create a query for txs where address AddrA withdrew rewards:\nquery.MustParse(\"tm.event = 'Tx' AND rewards.withdraw.address = 'AddrA'\")\n\nTo create a query for txs where address AddrA withdrew rewards from source Y:\nquery.MustParse(\"tm.event = 'Tx' AND rewards.withdraw.address = 'AddrA' AND rewards.withdraw.source = 'Y'\")\n\nTo create a query for txs where AddrA transferred funds:\nquery.MustParse(\"tm.event = 'Tx' AND transfer.sender = 'AddrA'\")\n\nThe following queries would return no results:\nquery.MustParse(\"tm.event = 'Tx' AND transfer.sender = 'AddrZ'\")\nquery.MustParse(\"tm.event = 'Tx' AND rewards.withdraw.address = 'AddrZ'\")\nquery.MustParse(\"tm.event = 'Tx' AND rewards.withdraw.source = 'W'\")\n\nSee list of all possible events here\nhttps://godoc.org/github.com/tendermint/tendermint/types#pkg-constants\n\nFor complete query syntax, check out\nhttps://godoc.org/github.com/tendermint/tendermint/libs/pubsub/query.\n\n```go\nimport rpchttp \"github.com/tendermint/rpc/client/http\"\nimport \"github.com/tendermint/tendermint/types\"\n\nclient, err := rpchttp.New(\"tcp://0.0.0.0:26657\", \"/websocket\")\nif err != nil {\n  // handle error\n}\n\nerr = client.Start()\nif err != nil {\n  // handle error\n}\ndefer client.Stop()\nctx, cancel := context.WithTimeout(context.Background(), 1 * time.Second)\ndefer cancel()\nquery := \"tm.event = 'Tx' AND tx.height = 3\"\ntxs, err := client.Subscribe(ctx, \"test-client\", query)\nif err != nil {\n  // handle error\n}\n\ngo func() {\n for e := range txs {\n   fmt.Println(\"got \", e.Data.(types.EventDataTx))\n   }\n}()\n```\n\nNOTE: if you're not reading events fast enough, Tendermint might\nterminate the subscription.\n"
+      description: 'To tell which events you want, you need to provide a query. query is a
+
+        string, which has a form: "condition AND condition ..." (no OR at the
+
+        moment). condition has a form: "key operation operand". key is a string with
+
+        a restricted set of possible symbols ( \t\n\r\\()"''=>", ">=", "CONTAINS" AND "EXISTS". operand
+
+        can be a string (escaped with single quotes), number, date or time.
+
+
+        Examples:
+
+        tm.event = ''NewBlock'' # new blocks
+
+        tm.event = ''CompleteProposal'' # node got a complete proposal
+
+        tm.event = ''Tx'' AND tx.hash = ''XYZ'' # single transaction
+
+        tm.event = ''Tx'' AND tx.height = 5 # all txs of the fifth block
+
+        tx.height = 5 # all txs of the fifth block
+
+
+        Tendermint provides a few predefined keys: tm.event, tx.hash and tx.height.
+
+        Note for transactions, you can define additional keys by providing events with
+
+        DeliverTx response.
+
+
+        import (
+
+        abci "github.com/tendermint/tendermint/abci/types"
+
+        "github.com/tendermint/tendermint/libs/pubsub/query"
+
+        )
+
+
+        abci.ResponseDeliverTx{
+
+        Events: []abci.Event{
+
+        {
+
+        Type: "rewards.withdraw",
+
+        Attributes: []abci.EventAttribute{
+
+        {Key: "address", Value: "AddrA", Index: true},
+
+        {Key: "source", Value: "SrcX", Index: true},
+
+        {Key: "amount", Value: "...", Index: true},
+
+        {Key: "balance", Value: "...", Index: true},
+
+        },
+
+        },
+
+        {
+
+        Type: "rewards.withdraw",
+
+        Attributes: []abci.EventAttribute{
+
+        {Key: "address", Value: "AddrB", Index: true},
+
+        {Key: "source", Value: "SrcY", Index: true},
+
+        {Key: "amount", Value: "...", Index: true},
+
+        {Key: "balance", Value: "...", Index: true},
+
+        },
+
+        },
+
+        {
+
+        Type: "transfer",
+
+        Attributes: []abci.EventAttribute{
+
+        {Key: "sender", Value: "AddrC", Index: true},
+
+        {Key: "recipient", Value: "AddrD", Index: true},
+
+        {Key: "amount", Value: "...", Index: true},
+
+        },
+
+        },
+
+        },
+
+        }
+
+
+        All events are indexed by a composite key of the form {eventType}.{evenAttrKey}.
+
+        In the above examples, the following keys would be indexed:
+
+        - rewards.withdraw.address
+
+        - rewards.withdraw.source
+
+        - rewards.withdraw.amount
+
+        - rewards.withdraw.balance
+
+        - transfer.sender
+
+        - transfer.recipient
+
+        - transfer.amount
+
+
+        Multiple event types with duplicate keys are allowed and are meant to
+
+        categorize unique and distinct events. In the above example, all events
+
+        indexed under the key `rewards.withdraw.address` will have the following
+
+        values stored and queryable:
+
+
+        - AddrA
+
+        - AddrB
+
+
+        To create a query for txs where address AddrA withdrew rewards:
+
+        query.MustParse("tm.event = ''Tx'' AND rewards.withdraw.address = ''AddrA''")
+
+
+        To create a query for txs where address AddrA withdrew rewards from source Y:
+
+        query.MustParse("tm.event = ''Tx'' AND rewards.withdraw.address = ''AddrA'' AND rewards.withdraw.source = ''Y''")
+
+
+        To create a query for txs where AddrA transferred funds:
+
+        query.MustParse("tm.event = ''Tx'' AND transfer.sender = ''AddrA''")
+
+
+        The following queries would return no results:
+
+        query.MustParse("tm.event = ''Tx'' AND transfer.sender = ''AddrZ''")
+
+        query.MustParse("tm.event = ''Tx'' AND rewards.withdraw.address = ''AddrZ''")
+
+        query.MustParse("tm.event = ''Tx'' AND rewards.withdraw.source = ''W''")
+
+
+        See list of all possible events here
+
+        https://godoc.org/github.com/tendermint/tendermint/types#pkg-constants
+
+
+        For complete query syntax, check out
+
+        https://godoc.org/github.com/tendermint/tendermint/libs/pubsub/query.
+
+
+        ```go
+
+        import rpchttp "github.com/tendermint/rpc/client/http"
+
+        import "github.com/tendermint/tendermint/types"
+
+
+        client, err := rpchttp.New("tcp://0.0.0.0:26657", "/websocket")
+
+        if err != nil {
+
+        // handle error
+
+        }
+
+
+        err = client.Start()
+
+        if err != nil {
+
+        // handle error
+
+        }
+
+        defer client.Stop()
+
+        ctx, cancel := context.WithTimeout(context.Background(), 1 * time.Second)
+
+        defer cancel()
+
+        query := "tm.event = ''Tx'' AND tx.height = 3"
+
+        txs, err := client.Subscribe(ctx, "test-client", query)
+
+        if err != nil {
+
+        // handle error
+
+        }
+
+
+        go func() {
+
+        for e := range txs {
+
+        fmt.Println("got ", e.Data.(types.EventDataTx))
+
+        }
+
+        }()
+
+        ```
+
+
+        NOTE: if you''re not reading events fast enough, Tendermint might
+
+        terminate the subscription.'
       parameters:
       - in: query
         name: query
@@ -107,7 +426,38 @@ paths:
       tags:
       - Events
       operationId: unsubscribe
-      description: "```go\nclient, err := rpchttp.New(\"tcp://0.0.0.0:26657\", \"/websocket\")\nif err != nil {\n  // handle error\n}\n\nerr := client.Start()\nif err != nil {\n  // handle error\n}\ndefer client.Stop()\nquery := \"tm.event = 'Tx' AND tx.height = 3\"\nerr = client.Unsubscribe(context.Background(), \"test-client\", query)\nif err != nil {\n  // handle error\n}\n```\n"
+      description: '```go
+
+        client, err := rpchttp.New("tcp://0.0.0.0:26657", "/websocket")
+
+        if err != nil {
+
+        // handle error
+
+        }
+
+
+        err := client.Start()
+
+        if err != nil {
+
+        // handle error
+
+        }
+
+        defer client.Stop()
+
+        query := "tm.event = ''Tx'' AND tx.height = 3"
+
+        err = client.Unsubscribe(context.Background(), "test-client", query)
+
+        if err != nil {
+
+        // handle error
+
+        }
+
+        ```'
       parameters:
       - in: query
         name: query
@@ -145,9 +495,6 @@ paths:
       tags:
       - Events
       operationId: unsubscribe_all
-      description: 'Unsubscribe from all events via WebSocket
-
-        '
       responses:
         '200':
           description: empty answer
@@ -163,38 +510,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    EventFilter:
-      description: Event filter query
-      type: object
-      properties:
-        query:
-          type: string
-          example: tm.event = 'Tx'
-    EventItem:
-      description: Event item metadata
-      type: object
-      properties:
-        cursor:
-          type: string
-          example: 0005d7c09065e9a7-01cf
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              example: tendermint/event/Tx
-            value:
-              type: string
-              format: json
-    EmptyResponse:
-      description: Empty Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            type: object
-            additionalProperties: {}
     ErrorResponse:
       description: Error Response
       allOf:
@@ -204,15 +519,6 @@ components:
           error:
             type: string
             example: Description of failure
-    JSONRPC:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
     EventsResponse:
       description: Events response
       allOf:
@@ -231,3 +537,44 @@ components:
           newest:
             type: string
             example: 0005d7c090660099-0200
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
+    EmptyResponse:
+      description: Empty Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            type: object
+            additionalProperties: {}
+    EventItem:
+      description: Event item metadata
+      type: object
+      properties:
+        cursor:
+          type: string
+          example: 0005d7c09065e9a7-01cf
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              example: tendermint/event/Tx
+            value:
+              type: string
+              format: json
+    EventFilter:
+      description: Event filter query
+      type: object
+      properties:
+        query:
+          type: string
+          example: tm.event = 'Tx'

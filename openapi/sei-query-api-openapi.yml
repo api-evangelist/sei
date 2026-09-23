@@ -162,6 +162,8 @@ paths:
                       additionalProperties: {}
       tags:
       - Query
+      summary: Cosmos accesscontrol XV1 beta1 list resource dependency mapping
+      x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/list_wasm_dependency_mapping:
     get:
       operationId: CosmosAccesscontrolXV1Beta1ListWasmDependencyMapping
@@ -682,6 +684,8 @@ paths:
                       additionalProperties: {}
       tags:
       - Query
+      summary: Cosmos accesscontrol XV1 beta1 list wasm dependency mapping
+      x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/params:
     get:
       operationId: CosmosAccesscontrolXV1Beta1Params
@@ -718,6 +722,8 @@ paths:
                       additionalProperties: {}
       tags:
       - Query
+      summary: Cosmos accesscontrol XV1 beta1 params
+      x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/resource_dependency_mapping_from_message_key/{message_key}:
     get:
       operationId: CosmosAccesscontrolXV1Beta1ResourceDependencyMappingFromMessageKey
@@ -878,6 +884,8 @@ paths:
           type: string
       tags:
       - Query
+      summary: Cosmos accesscontrol XV1 beta1 resource dependency mapping from message key
+      x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/wasm_dependency_mapping/{contract_address}:
     get:
       operationId: CosmosAccesscontrolXV1Beta1WasmDependencyMapping
@@ -1402,6 +1410,8 @@ paths:
           type: string
       tags:
       - Query
+      summary: Cosmos accesscontrol XV1 beta1 wasm dependency mapping
+      x-summary-source: derived
   /cosmos/auth/v1beta1/accounts:
     get:
       summary: Accounts returns all the existing accounts
@@ -1525,7 +1535,7 @@ paths:
       - Query
   /cosmos/auth/v1beta1/accounts/{address}:
     get:
-      summary: Account returns account details based on address.
+      summary: Account returns account details based on address
       operationId: CosmosAuthV1Beta1Account
       responses:
         '200':
@@ -1618,7 +1628,7 @@ paths:
       - Query
   /cosmos/auth/v1beta1/params:
     get:
-      summary: Params queries all parameters.
+      summary: Params queries all parameters
       operationId: CosmosAuthV1Beta1Params
       responses:
         '200':
@@ -1676,7 +1686,7 @@ paths:
       - Query
   /cosmos/authz/v1beta1/grants:
     get:
-      summary: Returns list of `Authorization`, granted to the grantee by the granter.
+      summary: Returns list of `Authorization`, granted to the grantee by the granter
       operationId: CosmosAuthzV1Beta1Grants
       responses:
         '200':
@@ -1818,7 +1828,7 @@ paths:
       - Query
   /cosmos/authz/v1beta1/grants/grantee/{grantee}:
     get:
-      summary: GranteeGrants returns a list of `GrantAuthorization` by grantee.
+      summary: GranteeGrants returns a list of `GrantAuthorization` by grantee
       description: 'Since: cosmos-sdk 0.45.2'
       operationId: CosmosAuthzV1Beta1GranteeGrants
       responses:
@@ -1955,7 +1965,7 @@ paths:
       - Query
   /cosmos/authz/v1beta1/grants/granter/{granter}:
     get:
-      summary: GranterGrants returns list of `GrantAuthorization`, granted by granter.
+      summary: GranterGrants returns list of `GrantAuthorization`, granted by granter
       description: 'Since: cosmos-sdk 0.45.2'
       operationId: CosmosAuthzV1Beta1GranterGrants
       responses:
@@ -2092,7 +2102,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/balances/{address}:
     get:
-      summary: AllBalances queries the balance of all coins for a single account.
+      summary: AllBalances queries the balance of all coins for a single account
       operationId: CosmosBankV1Beta1AllBalances
       responses:
         '200':
@@ -2220,7 +2230,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/balances/{address}/by_denom:
     get:
-      summary: Balance queries the balance of a single coin for a single account.
+      summary: Balance queries the balance of a single coin for a single account
       operationId: CosmosBankV1Beta1Balance
       responses:
         '200':
@@ -2276,7 +2286,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/denoms_metadata:
     get:
-      summary: DenomsMetadata queries the client metadata for all registered coin denominations.
+      summary: DenomsMetadata queries the client metadata for all registered coin denominations
       operationId: CosmosBankV1Beta1DenomsMetadata
       responses:
         '200':
@@ -2442,7 +2452,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/denoms_metadata/{denom}:
     get:
-      summary: DenomsMetadata queries the client metadata of a given coin denomination.
+      summary: DenomsMetadata queries the client metadata of a given coin denomination
       operationId: CosmosBankV1Beta1DenomMetadata
       responses:
         '200':
@@ -2541,7 +2551,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/params:
     get:
-      summary: Params queries the parameters of x/bank module.
+      summary: Params queries the parameters of x/bank module
       operationId: CosmosBankV1Beta1Params
       responses:
         '200':
@@ -2594,9 +2604,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/spendable_balances/{address}:
     get:
-      summary: 'SpendableBalances queries the spenable balance of all coins for a single
-
-        account.'
+      summary: SpendableBalances queries the spenable balance of all coins for a single account
       operationId: CosmosBankV1Beta1SpendableBalances
       responses:
         '200':
@@ -2724,7 +2732,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/supply:
     get:
-      summary: TotalSupply queries the total supply of all coins.
+      summary: TotalSupply queries the total supply of all coins
       operationId: CosmosBankV1Beta1TotalSupply
       responses:
         '200':
@@ -2849,7 +2857,7 @@ paths:
       - Query
   /cosmos/bank/v1beta1/supply/{denom}:
     get:
-      summary: SupplyOf queries the supply of a single coin.
+      summary: SupplyOf queries the supply of a single coin
       operationId: CosmosBankV1Beta1SupplyOf
       responses:
         '200':
@@ -2899,7 +2907,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/community_pool:
     get:
-      summary: CommunityPool queries the community pool coins.
+      summary: CommunityPool queries the community pool coins
       operationId: CosmosDistributionV1Beta1CommunityPool
       responses:
         '200':
@@ -2952,9 +2960,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards:
     get:
-      summary: 'DelegationTotalRewards queries the total rewards accrued by a each
-
-        validator.'
+      summary: DelegationTotalRewards queries the total rewards accrued by a each validator
       operationId: CosmosDistributionV1Beta1DelegationTotalRewards
       responses:
         '200':
@@ -3040,7 +3046,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards/{validator_address}:
     get:
-      summary: DelegationRewards queries the total rewards accrued by a delegation.
+      summary: DelegationRewards queries the total rewards accrued by a delegation
       operationId: CosmosDistributionV1Beta1DelegationRewards
       responses:
         '200':
@@ -3106,7 +3112,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/delegators/{delegator_address}/validators:
     get:
-      summary: DelegatorValidators queries the validators of a delegator.
+      summary: DelegatorValidators queries the validators of a delegator
       operationId: CosmosDistributionV1Beta1DelegatorValidators
       responses:
         '200':
@@ -3155,7 +3161,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/delegators/{delegator_address}/withdraw_address:
     get:
-      summary: DelegatorWithdrawAddress queries withdraw address of a delegator.
+      summary: DelegatorWithdrawAddress queries withdraw address of a delegator
       operationId: CosmosDistributionV1Beta1DelegatorWithdrawAddress
       responses:
         '200':
@@ -3202,7 +3208,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/params:
     get:
-      summary: Params queries params of the distribution module.
+      summary: Params queries params of the distribution module
       operationId: CosmosDistributionV1Beta1Params
       responses:
         '200':
@@ -3249,7 +3255,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/validators/{validator_address}/commission:
     get:
-      summary: ValidatorCommission queries accumulated commission for a validator.
+      summary: ValidatorCommission queries accumulated commission for a validator
       operationId: CosmosDistributionV1Beta1ValidatorCommission
       responses:
         '200':
@@ -3312,7 +3318,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/validators/{validator_address}/outstanding_rewards:
     get:
-      summary: ValidatorOutstandingRewards queries rewards of a validator address.
+      summary: ValidatorOutstandingRewards queries rewards of a validator address
       operationId: CosmosDistributionV1Beta1ValidatorOutstandingRewards
       responses:
         '200':
@@ -3377,7 +3383,7 @@ paths:
       - Query
   /cosmos/distribution/v1beta1/validators/{validator_address}/slashes:
     get:
-      summary: ValidatorSlashes queries slash events of a validator.
+      summary: ValidatorSlashes queries slash events of a validator
       operationId: CosmosDistributionV1Beta1ValidatorSlashes
       responses:
         '200':
@@ -3521,7 +3527,7 @@ paths:
       - Query
   /cosmos/evidence/v1beta1/evidence:
     get:
-      summary: AllEvidence queries all evidence.
+      summary: AllEvidence queries all evidence
       operationId: CosmosEvidenceV1Beta1AllEvidence
       responses:
         '200':
@@ -3640,7 +3646,7 @@ paths:
       - Query
   /cosmos/evidence/v1beta1/evidence/{evidence_hash}:
     get:
-      summary: Evidence queries evidence based on evidence hash.
+      summary: Evidence queries evidence based on evidence hash
       operationId: CosmosEvidenceV1Beta1Evidence
       responses:
         '200':
@@ -3693,7 +3699,7 @@ paths:
       - Query
   /cosmos/feegrant/v1beta1/allowance/{granter}/{grantee}:
     get:
-      summary: Allowance returns fee granted to the grantee by the granter.
+      summary: Allowance returns fee granted to the grantee by the granter
       operationId: CosmosFeegrantV1Beta1Allowance
       responses:
         '200':
@@ -3762,7 +3768,7 @@ paths:
       - Query
   /cosmos/feegrant/v1beta1/allowances/{grantee}:
     get:
-      summary: Allowances returns all the grants for address.
+      summary: Allowances returns all the grants for address
       operationId: CosmosFeegrantV1Beta1Allowances
       responses:
         '200':
@@ -3894,9 +3900,7 @@ paths:
       - Query
   /cosmos/feegrant/v1beta1/issued/{granter}:
     get:
-      summary: 'AllowancesByGranter returns all the grants given by an address
-
-        Since v0.46'
+      summary: AllowancesByGranter returns all the grants given by an address Since v0.46
       operationId: CosmosFeegrantV1Beta1AllowancesByGranter
       responses:
         '200':
@@ -4028,7 +4032,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/params/{params_type}:
     get:
-      summary: Params queries all parameters of the gov module.
+      summary: Params queries all parameters of the gov module
       operationId: CosmosGovV1Beta1Params
       responses:
         '200':
@@ -4147,7 +4151,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/proposals:
     get:
-      summary: Proposals queries all proposals based on given status.
+      summary: Proposals queries all proposals based on given status
       operationId: CosmosGovV1Beta1Proposals
       responses:
         '200':
@@ -4350,7 +4354,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/proposals/{proposal_id}:
     get:
-      summary: Proposal queries proposal details based on ProposalID.
+      summary: Proposal queries proposal details based on ProposalID
       operationId: CosmosGovV1Beta1Proposal
       responses:
         '200':
@@ -4462,7 +4466,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/proposals/{proposal_id}/deposits:
     get:
-      summary: Deposits queries all deposits of a single proposal.
+      summary: Deposits queries all deposits of a single proposal
       operationId: CosmosGovV1Beta1Deposits
       responses:
         '200':
@@ -4603,7 +4607,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/proposals/{proposal_id}/deposits/{depositor}:
     get:
-      summary: Deposit queries single deposit information based proposalID, depositAddr.
+      summary: Deposit queries single deposit information based proposalID, depositAddr
       operationId: CosmosGovV1Beta1Deposit
       responses:
         '200':
@@ -4678,7 +4682,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/proposals/{proposal_id}/tally:
     get:
-      summary: TallyResult queries the tally of a proposal vote.
+      summary: TallyResult queries the tally of a proposal vote
       operationId: CosmosGovV1Beta1TallyResult
       responses:
         '200':
@@ -4735,7 +4739,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/proposals/{proposal_id}/votes:
     get:
-      summary: Votes queries votes of a given proposal.
+      summary: Votes queries votes of a given proposal
       operationId: CosmosGovV1Beta1Votes
       responses:
         '200':
@@ -4898,7 +4902,7 @@ paths:
       - Query
   /cosmos/gov/v1beta1/proposals/{proposal_id}/votes/{voter}:
     get:
-      summary: Vote queries voted information based on proposalID, voterAddr.
+      summary: Vote queries voted information based on proposalID, voterAddr
       operationId: CosmosGovV1Beta1Vote
       responses:
         '200':
@@ -5271,7 +5275,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/delegations/{delegator_addr}:
     get:
-      summary: DelegatorDelegations queries all delegations of a given delegator address.
+      summary: DelegatorDelegations queries all delegations of a given delegator address
       operationId: CosmosStakingV1Beta1DelegatorDelegations
       responses:
         '200':
@@ -5424,7 +5428,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/delegators/{delegator_addr}/redelegations:
     get:
-      summary: Redelegations queries redelegations of given address.
+      summary: Redelegations queries redelegations of given address
       operationId: CosmosStakingV1Beta1Redelegations
       responses:
         '200':
@@ -5629,9 +5633,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/delegators/{delegator_addr}/unbonding_delegations:
     get:
-      summary: 'DelegatorUnbondingDelegations queries all unbonding delegations of a given
-
-        delegator address.'
+      summary: DelegatorUnbondingDelegations queries all unbonding delegations of a given…
       operationId: CosmosStakingV1Beta1DelegatorUnbondingDelegations
       responses:
         '200':
@@ -5783,9 +5785,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/delegators/{delegator_addr}/validators:
     get:
-      summary: 'DelegatorValidators queries all validators info for given delegator
-
-        address.'
+      summary: DelegatorValidators queries all validators info for given delegator address
       operationId: CosmosStakingV1Beta1DelegatorValidators
       responses:
         '200':
@@ -6000,9 +6000,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/delegators/{delegator_addr}/validators/{validator_addr}:
     get:
-      summary: 'DelegatorValidator queries validator info for given delegator validator
-
-        pair.'
+      summary: DelegatorValidator queries validator info for given delegator validator pair
       operationId: CosmosStakingV1Beta1DelegatorValidator
       responses:
         '200':
@@ -6138,7 +6136,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/historical_info/{height}:
     get:
-      summary: HistoricalInfo queries the historical info for given height.
+      summary: HistoricalInfo queries the historical info for given height
       operationId: CosmosStakingV1Beta1HistoricalInfo
       responses:
         '200':
@@ -6372,7 +6370,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/params:
     get:
-      summary: Parameters queries the staking parameters.
+      summary: Parameters queries the staking parameters
       operationId: CosmosStakingV1Beta1Params
       responses:
         '200':
@@ -6440,7 +6438,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/pool:
     get:
-      summary: Pool queries the pool info.
+      summary: Pool queries the pool info
       operationId: CosmosStakingV1Beta1Pool
       responses:
         '200':
@@ -6485,7 +6483,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/validators:
     get:
-      summary: Validators queries all validators that match the given status.
+      summary: Validators queries all validators that match the given status
       operationId: CosmosStakingV1Beta1Validators
       responses:
         '200':
@@ -6698,7 +6696,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/validators/{validator_addr}:
     get:
-      summary: Validator queries validator info for given validator address.
+      summary: Validator queries validator info for given validator address
       operationId: CosmosStakingV1Beta1Validator
       responses:
         '200':
@@ -6826,7 +6824,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/validators/{validator_addr}/delegations:
     get:
-      summary: ValidatorDelegations queries delegate info for given validator.
+      summary: ValidatorDelegations queries delegate info for given validator
       operationId: CosmosStakingV1Beta1ValidatorDelegations
       responses:
         '200':
@@ -6978,7 +6976,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}:
     get:
-      summary: Delegation queries delegate info for given validator delegator pair.
+      summary: Delegation queries delegate info for given validator delegator pair
       operationId: CosmosStakingV1Beta1Delegation
       responses:
         '200':
@@ -7062,9 +7060,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}/unbonding_delegation:
     get:
-      summary: 'UnbondingDelegation queries unbonding info for given validator delegator
-
-        pair.'
+      summary: UnbondingDelegation queries unbonding info for given validator delegator pair
       operationId: CosmosStakingV1Beta1UnbondingDelegation
       responses:
         '200':
@@ -7150,7 +7146,7 @@ paths:
       - Query
   /cosmos/staking/v1beta1/validators/{validator_addr}/unbonding_delegations:
     get:
-      summary: ValidatorUnbondingDelegations queries unbonding delegations of a validator.
+      summary: ValidatorUnbondingDelegations queries unbonding delegations of a validator
       operationId: CosmosStakingV1Beta1ValidatorUnbondingDelegations
       responses:
         '200':
@@ -7302,7 +7298,7 @@ paths:
       - Query
   /cosmos/upgrade/v1beta1/applied_plan/{name}:
     get:
-      summary: AppliedPlan queries a previously applied upgrade plan by its name.
+      summary: AppliedPlan queries a previously applied upgrade plan by its name
       operationId: CosmosUpgradeV1Beta1AppliedPlan
       responses:
         '200':
@@ -7352,7 +7348,7 @@ paths:
       - Query
   /cosmos/upgrade/v1beta1/current_plan:
     get:
-      summary: CurrentPlan queries the current upgrade plan.
+      summary: CurrentPlan queries the current upgrade plan
       operationId: CosmosUpgradeV1Beta1CurrentPlan
       responses:
         '200':
@@ -7441,7 +7437,7 @@ paths:
       - Query
   /cosmos/upgrade/v1beta1/module_versions:
     get:
-      summary: ModuleVersions queries the list of module versions from state.
+      summary: ModuleVersions queries the list of module versions from state
       description: 'Since: cosmos-sdk 0.43'
       operationId: CosmosUpgradeV1Beta1ModuleVersions
       responses:
@@ -7512,17 +7508,7 @@ paths:
       - Query
   /cosmos/upgrade/v1beta1/upgraded_consensus_state/{last_height}:
     get:
-      summary: 'UpgradedConsensusState queries the consensus state that will serve
-
-        as a trusted kernel for the next version of this chain. It will only be
-
-        stored at the last height of this chain.
-
-        UpgradedConsensusState RPC not supported with legacy querier
-
-        This rpc is deprecated now that IBC has its own replacement
-
-        (https://github.com/cosmos/ibc-go/blob/2c880a22e9f9cc75f62b527ca94aa75ce1106001/proto/ibc/core/client/v1/query.proto#L54)'
+      summary: UpgradedConsensusState queries the consensus state that will serve as a trusted…
       operationId: CosmosUpgradeV1Beta1UpgradedConsensusState
       responses:
         '200':
@@ -8513,7 +8499,7 @@ paths:
       - Query
   /ibc/apps/interchain_accounts/host/v1/params:
     get:
-      summary: Params queries all parameters of the ICA host submodule.
+      summary: Params queries all parameters of the ICA host submodule
       operationId: IbcApplicationsInterchainAccountsHostV1Params
       responses:
         '200':
@@ -8560,7 +8546,7 @@ paths:
       - Query
   /ibc/apps/transfer/v1/channels/{channel_id}/ports/{port_id}/escrow_address:
     get:
-      summary: EscrowAddress returns the escrow address for a particular port and channel id.
+      summary: EscrowAddress returns the escrow address for a particular port and channel id
       operationId: IbcApplicationsTransferV1EscrowAddress
       responses:
         '200':
@@ -8613,7 +8599,7 @@ paths:
       - Query
   /ibc/apps/transfer/v1/denom_hashes/{trace}:
     get:
-      summary: DenomHash queries a denomination hash information.
+      summary: DenomHash queries a denomination hash information
       operationId: IbcApplicationsTransferV1DenomHash
       responses:
         '200':
@@ -8662,7 +8648,7 @@ paths:
       - Query
   /ibc/apps/transfer/v1/denom_traces:
     get:
-      summary: DenomTraces queries all denomination traces.
+      summary: DenomTraces queries all denomination traces
       operationId: IbcApplicationsTransferV1DenomTraces
       responses:
         '200':
@@ -8778,7 +8764,7 @@ paths:
       - Query
   /ibc/apps/transfer/v1/denom_traces/{hash}:
     get:
-      summary: DenomTrace queries a denomination trace information.
+      summary: DenomTrace queries a denomination trace information
       operationId: IbcApplicationsTransferV1DenomTrace
       responses:
         '200':
@@ -8836,7 +8822,7 @@ paths:
       - Query
   /ibc/apps/transfer/v1/params:
     get:
-      summary: Params queries all parameters of the ibc-transfer module.
+      summary: Params queries all parameters of the ibc-transfer module
       operationId: IbcApplicationsTransferV1Params
       responses:
         '200':
@@ -8887,7 +8873,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels:
     get:
-      summary: Channels queries all the IBC channels of a chain.
+      summary: Channels queries all the IBC channels of a chain
       operationId: IbcCoreChannelV1Channels
       responses:
         '200':
@@ -9063,7 +9049,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}:
     get:
-      summary: Channel queries an IBC Channel.
+      summary: Channel queries an IBC Channel
       operationId: IbcCoreChannelV1Channel
       responses:
         '200':
@@ -9193,9 +9179,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/client_state:
     get:
-      summary: 'ChannelClientState queries for the client state for the channel associated
-
-        with the provided channel identifiers.'
+      summary: ChannelClientState queries for the client state for the channel associated with…
       operationId: IbcCoreChannelV1ChannelClientState
       responses:
         '200':
@@ -9293,9 +9277,7 @@ paths:
       - Query
   ? /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/consensus_state/revision/{revision_number}/height/{revision_height}
   : get:
-      summary: 'ChannelConsensusState queries for the consensus state for the channel
-
-        associated with the provided channel identifiers.'
+      summary: ChannelConsensusState queries for the consensus state for the channel…
       operationId: IbcCoreChannelV1ChannelConsensusState
       responses:
         '200':
@@ -9400,7 +9382,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/next_sequence:
     get:
-      summary: NextSequenceReceive returns the next receive sequence for a given channel.
+      summary: NextSequenceReceive returns the next receive sequence for a given channel
       operationId: IbcCoreChannelV1NextSequenceReceive
       responses:
         '200':
@@ -9483,9 +9465,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_acknowledgements:
     get:
-      summary: 'PacketAcknowledgements returns all the packet acknowledgements associated
-
-        with a channel.'
+      summary: PacketAcknowledgements returns all the packet acknowledgements associated with…
       operationId: IbcCoreChannelV1PacketAcknowledgements
       responses:
         '200':
@@ -9657,7 +9637,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_acks/{sequence}:
     get:
-      summary: PacketAcknowledgement queries a stored packet acknowledgement hash.
+      summary: PacketAcknowledgement queries a stored packet acknowledgement hash
       operationId: IbcCoreChannelV1PacketAcknowledgement
       responses:
         '200':
@@ -9749,9 +9729,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments:
     get:
-      summary: 'PacketCommitments returns all the packet commitments hashes associated
-
-        with a channel.'
+      summary: PacketCommitments returns all the packet commitments hashes associated with a…
       operationId: IbcCoreChannelV1PacketCommitments
       responses:
         '200':
@@ -9912,9 +9890,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_ack_sequences}/unreceived_acks:
     get:
-      summary: 'UnreceivedAcks returns all the unreceived IBC acknowledgements associated
-
-        with a channel and sequences.'
+      summary: UnreceivedAcks returns all the unreceived IBC acknowledgements associated with…
       operationId: IbcCoreChannelV1UnreceivedAcks
       responses:
         '200':
@@ -10007,9 +9983,7 @@ paths:
       - Query
   ? /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_commitment_sequences}/unreceived_packets
   : get:
-      summary: 'UnreceivedPackets returns all the unreceived IBC packets associated with a
-
-        channel and sequences.'
+      summary: UnreceivedPackets returns all the unreceived IBC packets associated with a…
       operationId: IbcCoreChannelV1UnreceivedPackets
       responses:
         '200':
@@ -10102,7 +10076,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments/{sequence}:
     get:
-      summary: PacketCommitment queries a stored packet commitment hash.
+      summary: PacketCommitment queries a stored packet commitment hash
       operationId: IbcCoreChannelV1PacketCommitment
       responses:
         '200':
@@ -10194,9 +10168,7 @@ paths:
       - Query
   /ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_receipts/{sequence}:
     get:
-      summary: 'PacketReceipt queries if a given packet sequence has been received on the
-
-        queried chain'
+      summary: PacketReceipt queries if a given packet sequence has been received on the…
       operationId: IbcCoreChannelV1PacketReceipt
       responses:
         '200':
@@ -10287,9 +10259,7 @@ paths:
       - Query
   /ibc/core/channel/v1/connections/{connection}/channels:
     get:
-      summary: 'ConnectionChannels queries all the channels associated with a connection
-
-        end.'
+      summary: ConnectionChannels queries all the channels associated with a connection end
       operationId: IbcCoreChannelV1ConnectionChannels
       responses:
         '200':
@@ -10473,7 +10443,7 @@ paths:
       - Query
   /ibc/client/v1/params:
     get:
-      summary: ClientParams queries all parameters of the ibc client.
+      summary: ClientParams queries all parameters of the ibc client
       operationId: IbcCoreClientV1ClientParams
       responses:
         '200':
@@ -10521,7 +10491,7 @@ paths:
       - Query
   /ibc/core/client/v1/client_states:
     get:
-      summary: ClientStates queries all the IBC light clients of a chain.
+      summary: ClientStates queries all the IBC light clients of a chain
       operationId: IbcCoreClientV1ClientStates
       responses:
         '200':
@@ -10642,7 +10612,7 @@ paths:
       - Query
   /ibc/core/client/v1/client_states/{client_id}:
     get:
-      summary: ClientState queries an IBC light client.
+      summary: ClientState queries an IBC light client
       operationId: IbcCoreClientV1ClientState
       responses:
         '200':
@@ -10726,7 +10696,7 @@ paths:
       - Query
   /ibc/core/client/v1/client_status/{client_id}:
     get:
-      summary: Status queries the status of an IBC client.
+      summary: Status queries the status of an IBC client
       operationId: IbcCoreClientV1ClientStatus
       responses:
         '200':
@@ -10774,9 +10744,7 @@ paths:
       - Query
   /ibc/core/client/v1/consensus_states/{client_id}:
     get:
-      summary: 'ConsensusStates queries all the consensus state associated with a given
-
-        client.'
+      summary: ConsensusStates queries all the consensus state associated with a given client
       operationId: IbcCoreClientV1ConsensusStates
       responses:
         '200':
@@ -10923,7 +10891,7 @@ paths:
       - Query
   /ibc/core/client/v1/consensus_states/{client_id}/heights:
     get:
-      summary: ConsensusStateHeights queries the height of every consensus states associated with a given client.
+      summary: ConsensusStateHeights queries the height of every consensus states associated…
       operationId: IbcCoreClientV1ConsensusStateHeights
       responses:
         '200':
@@ -11059,9 +11027,7 @@ paths:
       - Query
   /ibc/core/client/v1/consensus_states/{client_id}/revision/{revision_number}/height/{revision_height}:
     get:
-      summary: 'ConsensusState queries a consensus state associated with a client state at
-
-        a given height.'
+      summary: ConsensusState queries a consensus state associated with a client state at a…
       operationId: IbcCoreClientV1ConsensusState
       responses:
         '200':
@@ -11165,7 +11131,7 @@ paths:
       - Query
   /ibc/core/client/v1/upgraded_client_states:
     get:
-      summary: UpgradedClientState queries an Upgraded IBC light client.
+      summary: UpgradedClientState queries an Upgraded IBC light client
       operationId: IbcCoreClientV1UpgradedClientState
       responses:
         '200':
@@ -11213,7 +11179,7 @@ paths:
       - Query
   /ibc/core/client/v1/upgraded_consensus_states:
     get:
-      summary: UpgradedConsensusState queries an Upgraded IBC consensus state.
+      summary: UpgradedConsensusState queries an Upgraded IBC consensus state
       operationId: IbcCoreClientV1UpgradedConsensusState
       responses:
         '200':
@@ -11261,9 +11227,7 @@ paths:
       - Query
   /ibc/core/connection/v1/client_connections/{client_id}:
     get:
-      summary: 'ClientConnections queries the connection paths associated with a client
-
-        state.'
+      summary: ClientConnections queries the connection paths associated with a client state
       operationId: IbcCoreConnectionV1ClientConnections
       responses:
         '200':
@@ -11341,7 +11305,7 @@ paths:
       - Query
   /ibc/core/connection/v1/connections:
     get:
-      summary: Connections queries all the IBC connections of a chain.
+      summary: Connections queries all the IBC connections of a chain
       operationId: IbcCoreConnectionV1Connections
       responses:
         '200':
@@ -11537,7 +11501,7 @@ paths:
       - Query
   /ibc/core/connection/v1/connections/{connection_id}:
     get:
-      summary: Connection queries an IBC connection end.
+      summary: Connection queries an IBC connection end
       operationId: IbcCoreConnectionV1Connection
       responses:
         '200':
@@ -11688,9 +11652,7 @@ paths:
       - Query
   /ibc/core/connection/v1/connections/{connection_id}/client_state:
     get:
-      summary: 'ConnectionClientState queries the client state associated with the
-
-        connection.'
+      summary: ConnectionClientState queries the client state associated with the connection
       operationId: IbcCoreConnectionV1ConnectionClientState
       responses:
         '200':
@@ -11782,9 +11744,7 @@ paths:
       - Query
   /ibc/core/connection/v1/connections/{connection_id}/consensus_state/revision/{revision_number}/height/{revision_height}:
     get:
-      summary: 'ConnectionConsensusState queries the consensus state associated with the
-
-        connection.'
+      summary: ConnectionConsensusState queries the consensus state associated with the…
       operationId: IbcCoreConnectionV1ConnectionConsensusState
       responses:
         '200':
@@ -11932,7 +11892,7 @@ paths:
       - Query
   /sei-protocol/seichain/epoch/params:
     get:
-      summary: Parameters queries the parameters of the module.
+      summary: Parameters queries the parameters of the module
       operationId: SeiprotocolSeichainEpochParams
       responses:
         '200':
@@ -12013,6 +11973,8 @@ paths:
           type: string
       tags:
       - Query
+      summary: Seiprotocol seichain evm EVM address by sei address
+      x-summary-source: derived
   /sei-protocol/seichain/evm/pointer:
     get:
       operationId: SeiprotocolSeichainEvmPointer
@@ -12075,6 +12037,8 @@ paths:
           type: string
       tags:
       - Query
+      summary: Seiprotocol seichain evm pointer
+      x-summary-source: derived
   /sei-protocol/seichain/evm/pointer_version:
     get:
       operationId: SeiprotocolSeichainEvmPointerVersion
@@ -12131,6 +12095,8 @@ paths:
           default: ERC20
       tags:
       - Query
+      summary: Seiprotocol seichain evm pointer version
+      x-summary-source: derived
   /sei-protocol/seichain/evm/sei_address:
     get:
       operationId: SeiprotocolSeichainEvmSeiAddressByEVMAddress
@@ -12176,6 +12142,8 @@ paths:
           type: string
       tags:
       - Query
+      summary: Seiprotocol seichain evm sei address by EVM address
+      x-summary-source: derived
   /sei-protocol/seichain/evm/static_call:
     get:
       operationId: SeiprotocolSeichainEvmStaticCall
@@ -12226,9 +12194,11 @@ paths:
           type: string
       tags:
       - Query
+      summary: Seiprotocol seichain evm static call
+      x-summary-source: derived
   /seichain/mint/v1beta1/minter:
     get:
-      summary: EpochProvisions current minting epoch provisions value.
+      summary: EpochProvisions current minting epoch provisions value
       operationId: SeiprotocolSeichainMintMinter
       responses:
         '200':
@@ -12285,7 +12255,7 @@ paths:
       - Query
   /seichain/mint/v1beta1/params:
     get:
-      summary: Params returns the total set of minting parameters.
+      summary: Params returns the total set of minting parameters
       operationId: SeiprotocolSeichainMintParams
       responses:
         '200':
@@ -12548,6 +12518,8 @@ paths:
           format: uint64
       tags:
       - Query
+      summary: Seiprotocol seichain oracle twaps
+      x-summary-source: derived
   /sei-protocol/sei-chain/oracle/denoms/vote_targets:
     get:
       summary: VoteTargets returns all vote target denoms
@@ -12649,7 +12621,7 @@ paths:
       - Query
   /sei-protocol/sei-chain/oracle/params:
     get:
-      summary: Params queries all parameters.
+      summary: Params queries all parameters
       operationId: SeiprotocolSeichainOracleParams
       responses:
         '200':
@@ -12911,9 +12883,11 @@ paths:
           type: string
       tags:
       - Query
+      summary: Seiprotocol seichain tokenfactory denom allow list
+      x-summary-source: derived
   /sei-protocol/seichain/tokenfactory/denoms/metadata:
     get:
-      summary: "DenomsMetadata defines a gRPC query method for fetching\n DenomMetadata for a particular denom."
+      summary: DenomsMetadata defines a gRPC query method for fetching DenomMetadata for a…
       operationId: SeiprotocolSeichainTokenfactoryDenomMetadata
       responses:
         '200':
@@ -13012,9 +12986,7 @@ paths:
       - Query
   /sei-protocol/seichain/tokenfactory/denoms/{denom}/authority_metadata:
     get:
-      summary: 'DenomAuthorityMetadata defines a gRPC query method for fetching
-
-        DenomAuthorityMetadata for a particular denom.'
+      summary: DenomAuthorityMetadata defines a gRPC query method for fetching…
       operationId: SeiprotocolSeichainTokenfactoryDenomAuthorityMetadata
       responses:
         '200':
@@ -13068,9 +13040,7 @@ paths:
       - Query
   /sei-protocol/seichain/tokenfactory/denoms_from_creator/{creator}:
     get:
-      summary: 'DenomsFromCreator defines a gRPC query method for fetching all
-
-        denominations created by a specific admin/creator.'
+      summary: DenomsFromCreator defines a gRPC query method for fetching all denominations…
       operationId: SeiprotocolSeichainTokenfactoryDenomsFromCreator
       responses:
         '200':
@@ -13117,9 +13087,7 @@ paths:
       - Query
   /sei-protocol/seichain/tokenfactory/params:
     get:
-      summary: 'Params defines a gRPC query method that returns the tokenfactory module''s
-
-        parameters.'
+      summary: Params defines a gRPC query method that returns the tokenfactory module's…
       operationId: SeiprotocolSeichainTokenfactoryParams
       responses:
         '200':

@@ -25,7 +25,8 @@
     "sei-cosmos-rest-api.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
     "sei-cosmos-rest-api.yml: declared missing tag: Query",
     "sei-cosmos-rest-api.yml: declared missing tag: Service",
-    "sei-tendermint-rpc.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0"
+    "sei-tendermint-rpc.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "sei-abci-api-openapi.yml: previously refined output, superseded by openapi/_original/",

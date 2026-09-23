@@ -4,7 +4,24 @@ info:
   contact:
     name: Tendermint RPC
     url: https://github.com/tendermint/tendermint/issues/new/choose
-  description: "Tendermint supports the following RPC protocols:\n\n* URI over HTTP\n* JSON-RPC 2.0 over HTTP\n* JSON-RPC 2.0 over websockets (deprecated)\n\n## Configuration\n\nRPC can be configured by tuning parameters under `[rpc]` table in the\n`$TMHOME/config/config.toml` file or by using the `--rpc.X` command-line\nflags.\n\nDefault rpc listen address is `tcp://0.0.0.0:26657`.\nTo set another address, set the `laddr` config parameter to desired value.\nCORS (Cross-Origin Resource Sharing) can be enabled by setting\n`cors_allowed_origins`, `cors_allowed_methods`, `cors_allowed_headers`\nconfig parameters.\n\n## Arguments\n\nArguments which expect strings or byte arrays may be passed as quoted\nstrings, like `\"abc\"` or as `0x`-prefixed strings, like `0x616263`.\n\n## URI/HTTP\n\nA GET request with arguments encoded as query parameters:\n\n    curl localhost:26657/block?height=5\n\n## JSONRPC/HTTP\n\nJSONRPC requests can be POST'd to the root RPC endpoint via HTTP.\n\n    curl --header \"Content-Type: application/json\" --request POST --data '{\"method\": \"block\", \"params\": [\"5\"], \"id\": 1}' localhost:26657\n\n## JSONRPC/websockets\n\nIn Tendermint v0.35 and earlier, JSONRPC requests can be also made via\nwebsocket.  The websocket interface is deprecated in Tendermint v0.36, and\nwill be removed in v0.37.\n\nThe websocket endpoint is at `/websocket`, e.g. `localhost:26657/websocket`.\nThe RPC methods for event subscription (`subscribe`, `unsubscribe`, and\n`unsubscribe_all`) are only available via websockets.\n\nExample using https://github.com/hashrocket/ws:\n\n    ws ws://localhost:26657/websocket\n    > { \"jsonrpc\": \"2.0\", \"method\": \"subscribe\", \"params\": [\"tm.event='NewBlock'\"], \"id\": 1 }\n"
+  description: 'Tendermint supports the following RPC protocols:
+
+
+    * URI over HTTP
+
+    * JSON-RPC 2.0 over HTTP
+
+    * JSON-RPC 2.0 over websockets (deprecated)
+
+
+    ## Configuration
+
+
+    RPC can be configured by tuning parameters under `[rpc]` table in the
+
+    `$TMHOME/config/config.toml` file or by using the `--rpc.X` command-line
+
+    flags.'
   version: Master
   license:
     name: Apache 2.0
@@ -20,7 +37,7 @@ tags:
 paths:
   /broadcast_evidence:
     get:
-      summary: Broadcast evidence of the misbehavior.
+      summary: Broadcast evidence of the misbehavior
       operationId: broadcast_evidence
       parameters:
       - in: query
@@ -32,9 +49,7 @@ paths:
           example: JSON_EVIDENCE_encoded
       tags:
       - Evidence
-      description: 'Broadcast evidence of the misbehavior.
-
-        '
+      description: Broadcast evidence of the misbehavior.
       responses:
         '200':
           description: Broadcast evidence of the misbehavior.
@@ -59,6 +74,15 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
     BroadcastEvidenceResponse:
       type: object
       required:
@@ -77,12 +101,3 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
-    ErrorResponse:
-      description: Error Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          error:
-            type: string
-            example: Description of failure
