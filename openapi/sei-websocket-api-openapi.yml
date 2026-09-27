@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Tendermint RPC Websocket API
+  title: Tendermint RPC WebSocket API
   contact:
     name: Tendermint RPC
     url: https://github.com/tendermint/tendermint/issues/new/choose
@@ -387,24 +387,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    JSONRPC:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
-    EmptyResponse:
-      description: Empty Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            type: object
-            additionalProperties: {}
     ErrorResponse:
       description: Error Response
       allOf:
@@ -414,3 +396,21 @@ components:
           error:
             type: string
             example: Description of failure
+    EmptyResponse:
+      description: Empty Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            type: object
+            additionalProperties: {}
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'

@@ -519,6 +519,15 @@ components:
           error:
             type: string
             example: Description of failure
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
     EventsResponse:
       description: Events response
       allOf:
@@ -537,15 +546,13 @@ components:
           newest:
             type: string
             example: 0005d7c090660099-0200
-    JSONRPC:
+    EventFilter:
+      description: Event filter query
       type: object
       properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
+        query:
           type: string
-          example: '2.0'
+          example: tm.event = 'Tx'
     EmptyResponse:
       description: Empty Response
       allOf:
@@ -571,10 +578,3 @@ components:
             value:
               type: string
               format: json
-    EventFilter:
-      description: Event filter query
-      type: object
-      properties:
-        query:
-          type: string
-          example: tm.event = 'Tx'

@@ -65,15 +65,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    JSONRPC:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
     ErrorResponse:
       description: Error Response
       allOf:
@@ -95,6 +86,15 @@ components:
         result:
           type: string
           example: ''
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
+    JSONRPC:
+      type: object
+      properties:
         id:
           type: integer
           example: 0
