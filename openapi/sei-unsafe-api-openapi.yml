@@ -146,15 +146,12 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      description: Error Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          error:
-            type: string
-            example: Description of failure
+    dialResp:
+      type: object
+      properties:
+        Log:
+          type: string
+          example: Dialing seeds in progress. See /net_info for details
     EmptyResponse:
       description: Empty Response
       allOf:
@@ -164,6 +161,15 @@ components:
           result:
             type: object
             additionalProperties: {}
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
     JSONRPC:
       type: object
       properties:
@@ -173,9 +179,3 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
-    dialResp:
-      type: object
-      properties:
-        Log:
-          type: string
-          example: Dialing seeds in progress. See /net_info for details

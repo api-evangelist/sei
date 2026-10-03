@@ -263,15 +263,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      description: Error Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          error:
-            type: string
-            example: Description of failure
     BroadcastTxResponse:
       type: object
       required:
@@ -371,15 +362,6 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
-    JSONRPC:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
     BroadcastTxCommitResponse:
       type: object
       required:
@@ -443,6 +425,15 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
     Event:
       type: object
       properties:
@@ -455,3 +446,12 @@ components:
         index:
           type: boolean
           example: false
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
