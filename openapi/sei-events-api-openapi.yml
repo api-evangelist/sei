@@ -510,29 +510,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    EventFilter:
-      description: Event filter query
-      type: object
-      properties:
-        query:
-          type: string
-          example: tm.event = 'Tx'
-    EventItem:
-      description: Event item metadata
-      type: object
-      properties:
-        cursor:
-          type: string
-          example: 0005d7c09065e9a7-01cf
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              example: tendermint/event/Tx
-            value:
-              type: string
-              format: json
     EmptyResponse:
       description: Empty Response
       allOf:
@@ -542,15 +519,6 @@ components:
           result:
             type: object
             additionalProperties: {}
-    ErrorResponse:
-      description: Error Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          error:
-            type: string
-            example: Description of failure
     EventsResponse:
       description: Events response
       allOf:
@@ -569,6 +537,31 @@ components:
           newest:
             type: string
             example: 0005d7c090660099-0200
+    EventItem:
+      description: Event item metadata
+      type: object
+      properties:
+        cursor:
+          type: string
+          example: 0005d7c09065e9a7-01cf
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              example: tendermint/event/Tx
+            value:
+              type: string
+              format: json
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
     JSONRPC:
       type: object
       properties:
@@ -578,3 +571,10 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
+    EventFilter:
+      description: Event filter query
+      type: object
+      properties:
+        query:
+          type: string
+          example: tm.event = 'Tx'

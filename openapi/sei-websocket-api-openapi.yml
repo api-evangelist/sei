@@ -387,15 +387,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    EmptyResponse:
-      description: Empty Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            type: object
-            additionalProperties: {}
     ErrorResponse:
       description: Error Response
       allOf:
@@ -414,3 +405,12 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
+    EmptyResponse:
+      description: Empty Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            type: object
+            additionalProperties: {}

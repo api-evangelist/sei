@@ -263,46 +263,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    BroadcastTxResponse:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      - error
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-        id:
-          type: integer
-          example: 0
-        result:
-          required:
-          - code
-          - data
-          - log
-          - hash
-          properties:
-            code:
-              type: string
-              example: '0'
-            data:
-              type: string
-              example: ''
-            log:
-              type: string
-              example: ''
-            codespace:
-              type: string
-              example: ibc
-            hash:
-              type: string
-              example: 0D33F2F03A5234F38706E43004489E061AC40A2E
-          type: object
-        error:
-          type: string
-          example: ''
     CheckTxResponse:
       type: object
       required:
@@ -362,6 +322,46 @@ components:
         jsonrpc:
           type: string
           example: '2.0'
+    BroadcastTxResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      - error
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          required:
+          - code
+          - data
+          - log
+          - hash
+          properties:
+            code:
+              type: string
+              example: '0'
+            data:
+              type: string
+              example: ''
+            log:
+              type: string
+              example: ''
+            codespace:
+              type: string
+              example: ibc
+            hash:
+              type: string
+              example: 0D33F2F03A5234F38706E43004489E061AC40A2E
+          type: object
+        error:
+          type: string
+          example: ''
     BroadcastTxCommitResponse:
       type: object
       required:
@@ -434,6 +434,15 @@ components:
           error:
             type: string
             example: Description of failure
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
     Event:
       type: object
       properties:
@@ -446,12 +455,3 @@ components:
         index:
           type: boolean
           example: false
-    JSONRPC:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
