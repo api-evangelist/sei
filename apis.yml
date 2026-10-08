@@ -227,6 +227,8 @@ apis:
   - type: RateLimits
     url: rate-limits/sei-cosmos-rest-api-rate-limits.yml
 common:
+  - type: RateLimits
+    url: rate-limits/sei-cosmos-rest-api-rate-limits.yml
   - type: AgenticAccess
     url: agentic-access/sei-agentic-access.yml
   - type: DomainSecurity
