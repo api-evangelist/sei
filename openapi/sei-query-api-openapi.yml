@@ -162,7 +162,7 @@ paths:
                       additionalProperties: {}
       tags:
       - Query
-      summary: Cosmos accesscontrol XV1 beta1 list resource dependency mapping
+      summary: Cosmos accesscontrol XV1Beta1 list resource dependency mapping
       x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/list_wasm_dependency_mapping:
     get:
@@ -684,7 +684,7 @@ paths:
                       additionalProperties: {}
       tags:
       - Query
-      summary: Cosmos accesscontrol XV1 beta1 list wasm dependency mapping
+      summary: Cosmos accesscontrol XV1Beta1 list wasm dependency mapping
       x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/params:
     get:
@@ -722,7 +722,7 @@ paths:
                       additionalProperties: {}
       tags:
       - Query
-      summary: Cosmos accesscontrol XV1 beta1 params
+      summary: Cosmos accesscontrol XV1Beta1 params
       x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/resource_dependency_mapping_from_message_key/{message_key}:
     get:
@@ -884,7 +884,7 @@ paths:
           type: string
       tags:
       - Query
-      summary: Cosmos accesscontrol XV1 beta1 resource dependency mapping from message key
+      summary: Cosmos accesscontrol XV1Beta1 resource dependency mapping from message key
       x-summary-source: derived
   /cosmos/cosmos-sdk/accesscontrol/wasm_dependency_mapping/{contract_address}:
     get:
@@ -1410,7 +1410,7 @@ paths:
           type: string
       tags:
       - Query
-      summary: Cosmos accesscontrol XV1 beta1 wasm dependency mapping
+      summary: Cosmos accesscontrol XV1Beta1 wasm dependency mapping
       x-summary-source: derived
   /cosmos/auth/v1beta1/accounts:
     get:

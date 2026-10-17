@@ -155,6 +155,15 @@ components:
           error:
             type: string
             example: Description of failure
+    EmptyResponse:
+      description: Empty Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            type: object
+            additionalProperties: {}
     JSONRPC:
       type: object
       properties:
@@ -170,12 +179,3 @@ components:
         Log:
           type: string
           example: Dialing seeds in progress. See /net_info for details
-    EmptyResponse:
-      description: Empty Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            type: object
-            additionalProperties: {}

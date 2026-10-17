@@ -724,6 +724,46 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    UnconfirmedTransactionsResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          required:
+          - n_txs
+          - total
+          - total_bytes
+          - txs
+          properties:
+            n_txs:
+              type: string
+              example: '82'
+            total:
+              type: string
+              example: '82'
+            total_bytes:
+              type: string
+              example: '19974'
+            txs:
+              type:
+              - array
+              - 'null'
+              items:
+                type:
+                - string
+                - 'null'
+              example:
+              - gAPwYl3uCjCMTXENChSMnIkb5ZpYHBKIZqecFEV2tuZr7xIUA75/FmYq9WymsOBJ0XSJ8yV8zmQKMIxNcQ0KFIyciRvlmlgcEohmp5wURXa25mvvEhQbrvwbvlNiT+Yjr86G+YQNx7kRVgowjE1xDQoUjJyJG+WaWBwSiGannBRFdrbma+8SFK2m+1oxgILuQLO55n8mWfnbIzyPCjCMTXENChSMnIkb5ZpYHBKIZqecFEV2tuZr7xIUQNGfkmhTNMis4j+dyMDIWXdIPiYKMIxNcQ0KFIyciRvlmlgcEohmp5wURXa25mvvEhS8sL0D0wwgGCItQwVowak5YB38KRIUCg4KBXVhdG9tEgUxMDA1NBDoxRgaagom61rphyECn8x7emhhKdRCB2io7aS/6Cpuq5NbVqbODmqOT3jWw6kSQKUresk+d+Gw0BhjiggTsu8+1voW+VlDCQ1GRYnMaFOHXhyFv7BCLhFWxLxHSAYT8a5XqoMayosZf9mANKdXArA=
+          type: object
     Validator:
       type: object
       properties:
@@ -733,519 +773,6 @@ components:
           type: integer
         address:
           type: string
-    LagStatusResponse:
-      description: Lag Status Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            $ref: '#/components/schemas/LagStatus'
-    EmptyResponse:
-      description: Empty Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            type: object
-            additionalProperties: {}
-    LagStatus:
-      description: Lag Status Response
-      type: object
-      properties:
-        latest_height:
-          type: integer
-          example: '1'
-        max_peer_height:
-          type: integer
-          example: '1'
-        lag:
-          type: integer
-          example: '0'
-    ConsensusParams:
-      type:
-      - object
-      - 'null'
-      required:
-      - block
-      - evidence
-      - validator
-      properties:
-        block:
-          type: object
-          required:
-          - max_bytes
-          - max_gas_wanted
-          - max_gas
-          - time_iota_ms
-          properties:
-            max_bytes:
-              type: string
-              example: '22020096'
-            max_gas:
-              type: string
-              example: '1000'
-            time_iota_ms:
-              type: string
-              example: '1000'
-        evidence:
-          type: object
-          required:
-          - max_age
-          properties:
-            max_age:
-              type: string
-              example: '100000'
-        validator:
-          type: object
-          required:
-          - pub_key_types
-          properties:
-            pub_key_types:
-              type: array
-              items:
-                type: string
-              example:
-              - ed25519
-    BlockComplete:
-      type: object
-      properties:
-        block_id:
-          $ref: '#/components/schemas/BlockID'
-        block:
-          $ref: '#/components/schemas/Block'
-    NetInfoResponse:
-      description: NetInfo Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            $ref: '#/components/schemas/NetInfo'
-    BlockMeta:
-      type: object
-      properties:
-        block_id:
-          $ref: '#/components/schemas/BlockID'
-        block_size:
-          type: integer
-          example: 1000000
-        header:
-          $ref: '#/components/schemas/BlockHeader'
-        num_txs:
-          type: string
-          example: '54'
-    JSONRPC:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
-    Commit:
-      required:
-      - type
-      - height
-      - round
-      - block_id
-      - timestamp
-      - validator_address
-      - validator_index
-      - signature
-      properties:
-        type:
-          type: integer
-          example: 2
-        height:
-          type: string
-          example: '1262085'
-        round:
-          type: integer
-          example: 0
-        block_id:
-          $ref: '#/components/schemas/BlockID'
-        timestamp:
-          type: string
-          example: '2019-08-01T11:39:38.867269833Z'
-        validator_address:
-          type: string
-          example: 000001E443FD237E4B616E2FA69DF4EE3D49A94F
-        validator_index:
-          type: integer
-          example: 0
-        signature:
-          type: string
-          example: DBchvucTzAUEJnGYpNvMdqLhBAHG4Px8BsOBB3J3mAFCLGeuG7uJqy+nVngKzZdPhPi8RhmE/xcw/M9DOJjEDg==
-    BlockHeader:
-      required:
-      - version
-      - chain_id
-      - height
-      - time
-      - last_block_id
-      - last_commit_hash
-      - data_hash
-      - validators_hash
-      - next_validators_hash
-      - consensus_hash
-      - app_hash
-      - last_results_hash
-      - evidence_hash
-      - proposer_address
-      properties:
-        version:
-          required:
-          - block
-          - app
-          properties:
-            block:
-              type: string
-              example: '10'
-            app:
-              type: string
-              example: '0'
-          type: object
-        chain_id:
-          type: string
-          example: cosmoshub-2
-        height:
-          type: string
-          example: '12'
-        time:
-          type: string
-          example: '2019-04-22T17:01:51.701356223Z'
-        last_block_id:
-          $ref: '#/components/schemas/BlockID'
-        last_commit_hash:
-          type: string
-          example: 21B9BC845AD2CB2C4193CDD17BFC506F1EBE5A7402E84AD96E64171287A34812
-        data_hash:
-          type: string
-          example: 970886F99E77ED0D60DA8FCE0447C2676E59F2F77302B0C4AA10E1D02F18EF73
-        validators_hash:
-          type: string
-          example: D658BFD100CA8025CFD3BECFE86194322731D387286FBD26E059115FD5F2BCA0
-        next_validators_hash:
-          type: string
-          example: D658BFD100CA8025CFD3BECFE86194322731D387286FBD26E059115FD5F2BCA0
-        consensus_hash:
-          type: string
-          example: 0F2908883A105C793B74495EB7D6DF2EEA479ED7FC9349206A65CB0F9987A0B8
-        app_hash:
-          type: string
-          example: 223BF64D4A01074DC523A80E76B9BBC786C791FB0A1893AC5B14866356FCFD6C
-        last_results_hash:
-          type: string
-          example: ''
-        evidence_hash:
-          type: string
-          example: ''
-        proposer_address:
-          type: string
-          example: D540AB022088612AC74B287D076DBFBC4A377A2E
-      type: object
-    StatusResponse:
-      description: Status Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            $ref: '#/components/schemas/Status'
-    Peer:
-      type: object
-      properties:
-        node_id:
-          type: string
-          example: ''
-        url:
-          type: string
-          example: <id>@95.179.155.35:2385>
-    ValidatorPriority:
-      type: object
-      properties:
-        address:
-          type: string
-          example: 000001E443FD237E4B616E2FA69DF4EE3D49A94F
-        pub_key:
-          required:
-          - type
-          - value
-          properties:
-            type:
-              type: string
-              example: tendermint/PubKeyEd25519
-            value:
-              type: string
-              example: 9tK9IT+FPdf2qm+5c2qaxi10sWP+3erWTKgftn2PaQM=
-          type: object
-        voting_power:
-          type: string
-          example: '239727'
-        proposer_priority:
-          type: string
-          example: '-11896414'
-    ValidatorInfo:
-      type: object
-      properties:
-        address:
-          type: string
-          example: 5D6A51A8E9899C44079C6AF90618BA0369070E6E
-        pub_key:
-          $ref: '#/components/schemas/PubKey'
-        voting_power:
-          type: string
-          example: '0'
-    Status:
-      description: Status Response
-      type: object
-      properties:
-        node_info:
-          $ref: '#/components/schemas/NodeInfo'
-        sync_info:
-          $ref: '#/components/schemas/SyncInfo'
-        validator_info:
-          $ref: '#/components/schemas/ValidatorInfo'
-    BlockResultsResponse:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-        id:
-          type: integer
-          example: 0
-        result:
-          type: object
-          required:
-          - height
-          properties:
-            height:
-              type: string
-              example: '12'
-            txs_results:
-              type:
-              - array
-              - 'null'
-              items:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: '0'
-                  data:
-                    type: string
-                    example: ''
-                  log:
-                    type: string
-                    example: not enough gas
-                  info:
-                    type: string
-                    example: ''
-                  gas_wanted:
-                    type: string
-                    example: '100'
-                  gas_used:
-                    type: string
-                    example: '100'
-                  events:
-                    type:
-                    - array
-                    - 'null'
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          example: app
-                        attributes:
-                          type: array
-                          items:
-                            $ref: '#/components/schemas/Event'
-                  codespace:
-                    type: string
-                    example: ibc
-            total_gas_used:
-              type: string
-              example: '100'
-            begin_block_events:
-              type:
-              - array
-              - 'null'
-              items:
-                type: object
-                properties:
-                  type:
-                    type: string
-                    example: app
-                  attributes:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Event'
-            end_block:
-              type:
-              - array
-              - 'null'
-              items:
-                type: object
-                properties:
-                  type:
-                    type: string
-                    example: app
-                  attributes:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Event'
-            validator_updates:
-              type:
-              - array
-              - 'null'
-              items:
-                type: object
-                properties:
-                  pub_key:
-                    type: object
-                    required:
-                    - type
-                    - value
-                    properties:
-                      type:
-                        type: string
-                        example: tendermint/PubKeyEd25519
-                      value:
-                        type: string
-                        example: 9tK9IT+FPdf2qm+5c2qaxi10sWP+3erWTKgftn2PaQM=
-                  power:
-                    type: string
-                    example: '300'
-            consensus_params_updates:
-              $ref: '#/components/schemas/ConsensusParams'
-    ProtocolVersion:
-      type: object
-      properties:
-        p2p:
-          type: string
-          example: '7'
-        block:
-          type: string
-          example: '10'
-        app:
-          type: string
-          example: '0'
-    GenesisChunkedResponse:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-        id:
-          type: integer
-          example: 0
-        result:
-          required:
-          - chunk
-          - total
-          - data
-          properties:
-            chunk:
-              type: integer
-              example: 0
-            total:
-              type: integer
-              example: 1
-            data:
-              type: string
-              example: Z2VuZXNpcwo=
-    GenesisResponse:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-        id:
-          type: integer
-          example: 0
-        result:
-          type: object
-          required:
-          - genesis
-          properties:
-            genesis:
-              type: object
-              required:
-              - genesis_time
-              - chain_id
-              - initial_height
-              - consensus_params
-              - validators
-              - app_hash
-              properties:
-                genesis_time:
-                  type: string
-                  example: '2019-04-22T17:00:00Z'
-                chain_id:
-                  type: string
-                  example: cosmoshub-2
-                initial_height:
-                  type: string
-                  example: '2'
-                consensus_params:
-                  $ref: '#/components/schemas/ConsensusParams'
-                validators:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      address:
-                        type: string
-                        example: B00A6323737F321EB0B8D59C6FD497A14B60938A
-                      pub_key:
-                        required:
-                        - type
-                        - value
-                        properties:
-                          type:
-                            type: string
-                            example: tendermint/PubKeyEd25519
-                          value:
-                            type: string
-                            example: cOQZvh/h9ZioSeUMZB/1Vy1Xo5x2sjrVjlE/qHnYifM=
-                        type: object
-                      power:
-                        type: string
-                        example: '9328525'
-                      name:
-                        type: string
-                        example: Certus One
-                app_hash:
-                  type: string
-                  example: ''
-                app_state:
-                  properties: {}
-                  type: object
-    HeaderResponse:
-      description: Block Header info
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            $ref: '#/components/schemas/BlockHeader'
     ConsensusParamsResponse:
       type: object
       required:
@@ -1270,107 +797,28 @@ components:
               example: '1'
             consensus_params:
               $ref: '#/components/schemas/ConsensusParams'
-    ValidatorsResponse:
+    JSONRPC:
       type: object
-      required:
-      - jsonrpc
-      - id
-      - result
       properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
         id:
           type: integer
           example: 0
-        result:
-          required:
-          - block_height
-          - validators
-          properties:
-            block_height:
-              type: string
-              example: '55'
-            validators:
-              type: array
-              items:
-                $ref: '#/components/schemas/ValidatorPriority'
-            count:
-              type: string
-              example: '1'
-            total:
-              type: string
-              example: '25'
-          type: object
-    NumUnconfirmedTransactionsResponse:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
         jsonrpc:
           type: string
           example: '2.0'
-        id:
-          type: integer
-          example: 0
-        result:
-          required:
-          - n_txs
-          - total
-          - total_bytes
-          properties:
-            n_txs:
-              type: string
-              example: '31'
-            total:
-              type: string
-              example: '82'
-            total_bytes:
-              type: string
-              example: '19974'
-          type: object
-    BlockResponse:
-      description: Block info
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          result:
-            $ref: '#/components/schemas/BlockComplete'
-    NodeInfo:
+    LagStatus:
+      description: Lag Status Response
       type: object
       properties:
-        protocol_version:
-          $ref: '#/components/schemas/ProtocolVersion'
-        id:
-          type: string
-          example: 5576458aef205977e18fd50b274e9b5d9014525a
-        listen_addr:
-          type: string
-          example: tcp://0.0.0.0:26656
-        network:
-          type: string
-          example: cosmoshub-2
-        version:
-          type: string
-          example: 0.32.1
-        channels:
-          type: string
-          example: '4020212223303800'
-        moniker:
-          type: string
-          example: moniker-node
-        other:
-          type: object
-          properties:
-            tx_index:
-              type: string
-              example: 'on'
-            rpc_address:
-              type: string
-              example: tcp://0.0.0.0:26657
+        latest_height:
+          type: integer
+          example: '1'
+        max_peer_height:
+          type: integer
+          example: '1'
+        lag:
+          type: integer
+          example: '0'
     ConsensusStateResponse:
       type: object
       required:
@@ -1452,6 +900,331 @@ components:
                       example: 0
               type: object
           type: object
+    GenesisResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          type: object
+          required:
+          - genesis
+          properties:
+            genesis:
+              type: object
+              required:
+              - genesis_time
+              - chain_id
+              - initial_height
+              - consensus_params
+              - validators
+              - app_hash
+              properties:
+                genesis_time:
+                  type: string
+                  example: '2019-04-22T17:00:00Z'
+                chain_id:
+                  type: string
+                  example: cosmoshub-2
+                initial_height:
+                  type: string
+                  example: '2'
+                consensus_params:
+                  $ref: '#/components/schemas/ConsensusParams'
+                validators:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      address:
+                        type: string
+                        example: B00A6323737F321EB0B8D59C6FD497A14B60938A
+                      pub_key:
+                        required:
+                        - type
+                        - value
+                        properties:
+                          type:
+                            type: string
+                            example: tendermint/PubKeyEd25519
+                          value:
+                            type: string
+                            example: cOQZvh/h9ZioSeUMZB/1Vy1Xo5x2sjrVjlE/qHnYifM=
+                        type: object
+                      power:
+                        type: string
+                        example: '9328525'
+                      name:
+                        type: string
+                        example: Certus One
+                app_hash:
+                  type: string
+                  example: ''
+                app_state:
+                  properties: {}
+                  type: object
+    NetInfo:
+      type: object
+      properties:
+        listening:
+          type: boolean
+          example: true
+        listeners:
+          type: array
+          items:
+            type: string
+            example: Listener(@)
+        n_peers:
+          type: string
+          example: '1'
+        peers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Peer'
+    LagStatusResponse:
+      description: Lag Status Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            $ref: '#/components/schemas/LagStatus'
+    StatusResponse:
+      description: Status Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            $ref: '#/components/schemas/Status'
+    ValidatorInfo:
+      type: object
+      properties:
+        address:
+          type: string
+          example: 5D6A51A8E9899C44079C6AF90618BA0369070E6E
+        pub_key:
+          $ref: '#/components/schemas/PubKey'
+        voting_power:
+          type: string
+          example: '0'
+    BlockMeta:
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/BlockID'
+        block_size:
+          type: integer
+          example: 1000000
+        header:
+          $ref: '#/components/schemas/BlockHeader'
+        num_txs:
+          type: string
+          example: '54'
+    ConsensusParams:
+      type:
+      - object
+      - 'null'
+      required:
+      - block
+      - evidence
+      - validator
+      properties:
+        block:
+          type: object
+          required:
+          - max_bytes
+          - max_gas_wanted
+          - max_gas
+          - time_iota_ms
+          properties:
+            max_bytes:
+              type: string
+              example: '22020096'
+            max_gas:
+              type: string
+              example: '1000'
+            time_iota_ms:
+              type: string
+              example: '1000'
+        evidence:
+          type: object
+          required:
+          - max_age
+          properties:
+            max_age:
+              type: string
+              example: '100000'
+        validator:
+          type: object
+          required:
+          - pub_key_types
+          properties:
+            pub_key_types:
+              type: array
+              items:
+                type: string
+              example:
+              - ed25519
+    Peer:
+      type: object
+      properties:
+        node_id:
+          type: string
+          example: ''
+        url:
+          type: string
+          example: <id>@95.179.155.35:2385>
+    EmptyResponse:
+      description: Empty Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            type: object
+            additionalProperties: {}
+    Status:
+      description: Status Response
+      type: object
+      properties:
+        node_info:
+          $ref: '#/components/schemas/NodeInfo'
+        sync_info:
+          $ref: '#/components/schemas/SyncInfo'
+        validator_info:
+          $ref: '#/components/schemas/ValidatorInfo'
+    BlockID:
+      required:
+      - hash
+      - parts
+      properties:
+        hash:
+          type: string
+          example: 112BC173FD838FB68EB43476816CD7B4C6661B6884A9E357B417EE957E1CF8F7
+        parts:
+          required:
+          - total
+          - hash
+          properties:
+            total:
+              type: integer
+              example: 1
+            hash:
+              type: string
+              example: 38D4B26B5B725C4F13571EFE022C030390E4C33C8CF6F88EDD142EA769642DBD
+          type: object
+    Commit:
+      required:
+      - type
+      - height
+      - round
+      - block_id
+      - timestamp
+      - validator_address
+      - validator_index
+      - signature
+      properties:
+        type:
+          type: integer
+          example: 2
+        height:
+          type: string
+          example: '1262085'
+        round:
+          type: integer
+          example: 0
+        block_id:
+          $ref: '#/components/schemas/BlockID'
+        timestamp:
+          type: string
+          example: '2019-08-01T11:39:38.867269833Z'
+        validator_address:
+          type: string
+          example: 000001E443FD237E4B616E2FA69DF4EE3D49A94F
+        validator_index:
+          type: integer
+          example: 0
+        signature:
+          type: string
+          example: DBchvucTzAUEJnGYpNvMdqLhBAHG4Px8BsOBB3J3mAFCLGeuG7uJqy+nVngKzZdPhPi8RhmE/xcw/M9DOJjEDg==
+    SyncInfo:
+      type: object
+      properties:
+        latest_block_hash:
+          type: string
+          example: 790BA84C3545FCCC49A5C629CEE6EA58A6E875C3862175BDC11EE7AF54703501
+        latest_app_hash:
+          type: string
+          example: C9AEBB441B787D9F1D846DE51F3826F4FD386108B59B08239653ABF59455C3F8
+        latest_block_height:
+          type: string
+          example: '1262196'
+        latest_block_time:
+          type: string
+          example: '2019-08-01T11:52:22.818762194Z'
+        earliest_block_hash:
+          type: string
+          example: 790BA84C3545FCCC49A5C629CEE6EA58A6E875C3862175BDC11EE7AF54703501
+        earliest_app_hash:
+          type: string
+          example: C9AEBB441B787D9F1D846DE51F3826F4FD386108B59B08239653ABF59455C3F8
+        earliest_block_height:
+          type: string
+          example: '1262196'
+        earliest_block_time:
+          type: string
+          example: '2019-08-01T11:52:22.818762194Z'
+        max_peer_block_height:
+          type: string
+          example: '1262196'
+        catching_up:
+          type: boolean
+          example: false
+        total_synced_time:
+          type: string
+          example: '1000000000'
+        remaining_time:
+          type: string
+          example: '0'
+        total_snapshots:
+          type: string
+          example: '10'
+        chunk_process_avg_time:
+          type: string
+          example: '1000000000'
+        snapshot_height:
+          type: string
+          example: '1262196'
+        snapshot_chunks_count:
+          type: string
+          example: '10'
+        snapshot_chunks_total:
+          type: string
+          example: '100'
+        backfilled_blocks:
+          type: string
+          example: '10'
+        backfill_blocks_total:
+          type: string
+          example: '100'
+    PubKey:
+      type: object
+      properties:
+        type:
+          type: string
+          example: tendermint/PubKeyEd25519
+        value:
+          type: string
+          example: A6DoBUypNtUAyEHWtQ9bFjfNg8Bo9CrnkUGl6k6OHN4=
     CommitResponse:
       type: object
       required:
@@ -1541,74 +1314,43 @@ components:
               type: integer
               example: 2
           type: object
-    ErrorResponse:
-      description: Error Response
+    BlockResponse:
+      description: Block info
       allOf:
       - $ref: '#/components/schemas/JSONRPC'
       - type: object
         properties:
-          error:
-            type: string
-            example: Description of failure
-    BlockID:
+          result:
+            $ref: '#/components/schemas/BlockComplete'
+    NumUnconfirmedTransactionsResponse:
+      type: object
       required:
-      - hash
-      - parts
+      - jsonrpc
+      - id
+      - result
       properties:
-        hash:
+        jsonrpc:
           type: string
-          example: 112BC173FD838FB68EB43476816CD7B4C6661B6884A9E357B417EE957E1CF8F7
-        parts:
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
           required:
+          - n_txs
           - total
-          - hash
+          - total_bytes
           properties:
-            total:
-              type: integer
-              example: 1
-            hash:
+            n_txs:
               type: string
-              example: 38D4B26B5B725C4F13571EFE022C030390E4C33C8CF6F88EDD142EA769642DBD
+              example: '31'
+            total:
+              type: string
+              example: '82'
+            total_bytes:
+              type: string
+              example: '19974'
           type: object
-    PubKey:
-      type: object
-      properties:
-        type:
-          type: string
-          example: tendermint/PubKeyEd25519
-        value:
-          type: string
-          example: A6DoBUypNtUAyEHWtQ9bFjfNg8Bo9CrnkUGl6k6OHN4=
-    NetInfo:
-      type: object
-      properties:
-        listening:
-          type: boolean
-          example: true
-        listeners:
-          type: array
-          items:
-            type: string
-            example: Listener(@)
-        n_peers:
-          type: string
-          example: '1'
-        peers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Peer'
-    Event:
-      type: object
-      properties:
-        key:
-          type: string
-          example: YWN0aW9u
-        value:
-          type: string
-          example: c2VuZA==
-        index:
-          type: boolean
-          example: false
     TxSearchResponse:
       type: object
       required:
@@ -1703,27 +1445,178 @@ components:
               type: string
               example: '2'
           type: object
-    BlockchainResponse:
-      description: Blockchain info
+    NodeInfo:
+      type: object
+      properties:
+        protocol_version:
+          $ref: '#/components/schemas/ProtocolVersion'
+        id:
+          type: string
+          example: 5576458aef205977e18fd50b274e9b5d9014525a
+        listen_addr:
+          type: string
+          example: tcp://0.0.0.0:26656
+        network:
+          type: string
+          example: cosmoshub-2
+        version:
+          type: string
+          example: 0.32.1
+        channels:
+          type: string
+          example: '4020212223303800'
+        moniker:
+          type: string
+          example: moniker-node
+        other:
+          type: object
+          properties:
+            tx_index:
+              type: string
+              example: 'on'
+            rpc_address:
+              type: string
+              example: tcp://0.0.0.0:26657
+    TxResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          required:
+          - hash
+          - height
+          - index
+          - tx_result
+          - tx
+          properties:
+            hash:
+              type: string
+              example: D70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED
+            height:
+              type: string
+              example: '1000'
+            index:
+              type: integer
+              example: 0
+            tx_result:
+              required:
+              - log
+              - gas_wanted
+              - gas_used
+              - tags
+              properties:
+                log:
+                  type: string
+                  example: '[{"msg_index":"0","success":true,"log":""}]'
+                gas_wanted:
+                  type: string
+                  example: '200000'
+                gas_used:
+                  type: string
+                  example: '28596'
+                tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Event'
+              type: object
+            tx:
+              type: string
+              example: 5wHwYl3uCkaoo2GaChQmSIu8hxpJxLcCuIi8fiHN4TMwrRIU/Af1cEG7Rcs/6LjTl7YjRSymJfYaFAoFdWF0b20SCzE0OTk5OTk1MDAwEhMKDQoFdWF0b20SBDUwMDAQwJoMGmoKJuta6YchAwswBShaB1wkZBctLIhYqBC3JrAI28XGzxP+rVEticGEEkAc+khTkKL9CDE47aDvjEHvUNt+izJfT4KVF2v2JkC+bmlH9K08q3PqHeMI9Z5up+XMusnTqlP985KF+SI5J3ZOIhhNYWRlIGJ5IENpcmNsZSB3aXRoIGxvdmU=
+          type: object
+    BlockHeader:
+      required:
+      - version
+      - chain_id
+      - height
+      - time
+      - last_block_id
+      - last_commit_hash
+      - data_hash
+      - validators_hash
+      - next_validators_hash
+      - consensus_hash
+      - app_hash
+      - last_results_hash
+      - evidence_hash
+      - proposer_address
+      properties:
+        version:
+          required:
+          - block
+          - app
+          properties:
+            block:
+              type: string
+              example: '10'
+            app:
+              type: string
+              example: '0'
+          type: object
+        chain_id:
+          type: string
+          example: cosmoshub-2
+        height:
+          type: string
+          example: '12'
+        time:
+          type: string
+          example: '2019-04-22T17:01:51.701356223Z'
+        last_block_id:
+          $ref: '#/components/schemas/BlockID'
+        last_commit_hash:
+          type: string
+          example: 21B9BC845AD2CB2C4193CDD17BFC506F1EBE5A7402E84AD96E64171287A34812
+        data_hash:
+          type: string
+          example: 970886F99E77ED0D60DA8FCE0447C2676E59F2F77302B0C4AA10E1D02F18EF73
+        validators_hash:
+          type: string
+          example: D658BFD100CA8025CFD3BECFE86194322731D387286FBD26E059115FD5F2BCA0
+        next_validators_hash:
+          type: string
+          example: D658BFD100CA8025CFD3BECFE86194322731D387286FBD26E059115FD5F2BCA0
+        consensus_hash:
+          type: string
+          example: 0F2908883A105C793B74495EB7D6DF2EEA479ED7FC9349206A65CB0F9987A0B8
+        app_hash:
+          type: string
+          example: 223BF64D4A01074DC523A80E76B9BBC786C791FB0A1893AC5B14866356FCFD6C
+        last_results_hash:
+          type: string
+          example: ''
+        evidence_hash:
+          type: string
+          example: ''
+        proposer_address:
+          type: string
+          example: D540AB022088612AC74B287D076DBFBC4A377A2E
+      type: object
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
+    NetInfoResponse:
+      description: NetInfo Response
       allOf:
       - $ref: '#/components/schemas/JSONRPC'
       - type: object
         properties:
           result:
-            $ref: '#/components/schemas/Blockchain'
-    Blockchain:
-      type: object
-      required:
-      - last_height
-      - block_metas
-      properties:
-        last_height:
-          type: string
-          example: '1276718'
-        block_metas:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlockMeta'
+            $ref: '#/components/schemas/NetInfo'
     DumpConsensusResponse:
       type: object
       required:
@@ -1982,7 +1875,7 @@ components:
                         type: object
                     type: object
           type: object
-    TxResponse:
+    GenesisChunkedResponse:
       type: object
       required:
       - jsonrpc
@@ -1997,46 +1890,213 @@ components:
           example: 0
         result:
           required:
-          - hash
-          - height
-          - index
-          - tx_result
-          - tx
+          - chunk
+          - total
+          - data
           properties:
-            hash:
-              type: string
-              example: D70952032620CC4E2737EB8AC379806359D8E0B17B0488F627997A0B043ABDED
-            height:
-              type: string
-              example: '1000'
-            index:
+            chunk:
               type: integer
               example: 0
-            tx_result:
-              required:
-              - log
-              - gas_wanted
-              - gas_used
-              - tags
-              properties:
-                log:
-                  type: string
-                  example: '[{"msg_index":"0","success":true,"log":""}]'
-                gas_wanted:
-                  type: string
-                  example: '200000'
-                gas_used:
-                  type: string
-                  example: '28596'
-                tags:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Event'
-              type: object
-            tx:
+            total:
+              type: integer
+              example: 1
+            data:
               type: string
-              example: 5wHwYl3uCkaoo2GaChQmSIu8hxpJxLcCuIi8fiHN4TMwrRIU/Af1cEG7Rcs/6LjTl7YjRSymJfYaFAoFdWF0b20SCzE0OTk5OTk1MDAwEhMKDQoFdWF0b20SBDUwMDAQwJoMGmoKJuta6YchAwswBShaB1wkZBctLIhYqBC3JrAI28XGzxP+rVEticGEEkAc+khTkKL9CDE47aDvjEHvUNt+izJfT4KVF2v2JkC+bmlH9K08q3PqHeMI9Z5up+XMusnTqlP985KF+SI5J3ZOIhhNYWRlIGJ5IENpcmNsZSB3aXRoIGxvdmU=
+              example: Z2VuZXNpcwo=
+    ValidatorsResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          required:
+          - block_height
+          - validators
+          properties:
+            block_height:
+              type: string
+              example: '55'
+            validators:
+              type: array
+              items:
+                $ref: '#/components/schemas/ValidatorPriority'
+            count:
+              type: string
+              example: '1'
+            total:
+              type: string
+              example: '25'
           type: object
+    ValidatorPriority:
+      type: object
+      properties:
+        address:
+          type: string
+          example: 000001E443FD237E4B616E2FA69DF4EE3D49A94F
+        pub_key:
+          required:
+          - type
+          - value
+          properties:
+            type:
+              type: string
+              example: tendermint/PubKeyEd25519
+            value:
+              type: string
+              example: 9tK9IT+FPdf2qm+5c2qaxi10sWP+3erWTKgftn2PaQM=
+          type: object
+        voting_power:
+          type: string
+          example: '239727'
+        proposer_priority:
+          type: string
+          example: '-11896414'
+    ProtocolVersion:
+      type: object
+      properties:
+        p2p:
+          type: string
+          example: '7'
+        block:
+          type: string
+          example: '10'
+        app:
+          type: string
+          example: '0'
+    HeaderResponse:
+      description: Block Header info
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            $ref: '#/components/schemas/BlockHeader'
+    BlockResultsResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+        id:
+          type: integer
+          example: 0
+        result:
+          type: object
+          required:
+          - height
+          properties:
+            height:
+              type: string
+              example: '12'
+            txs_results:
+              type:
+              - array
+              - 'null'
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: '0'
+                  data:
+                    type: string
+                    example: ''
+                  log:
+                    type: string
+                    example: not enough gas
+                  info:
+                    type: string
+                    example: ''
+                  gas_wanted:
+                    type: string
+                    example: '100'
+                  gas_used:
+                    type: string
+                    example: '100'
+                  events:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: app
+                        attributes:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Event'
+                  codespace:
+                    type: string
+                    example: ibc
+            total_gas_used:
+              type: string
+              example: '100'
+            begin_block_events:
+              type:
+              - array
+              - 'null'
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: app
+                  attributes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+            end_block:
+              type:
+              - array
+              - 'null'
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: app
+                  attributes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+            validator_updates:
+              type:
+              - array
+              - 'null'
+              items:
+                type: object
+                properties:
+                  pub_key:
+                    type: object
+                    required:
+                    - type
+                    - value
+                    properties:
+                      type:
+                        type: string
+                        example: tendermint/PubKeyEd25519
+                      value:
+                        type: string
+                        example: 9tK9IT+FPdf2qm+5c2qaxi10sWP+3erWTKgftn2PaQM=
+                  power:
+                    type: string
+                    example: '300'
+            consensus_params_updates:
+              $ref: '#/components/schemas/ConsensusParams'
     Block:
       type: object
       properties:
@@ -2064,6 +2124,14 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Commit'
+    BlockchainResponse:
+      description: Blockchain info
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          result:
+            $ref: '#/components/schemas/Blockchain'
     Evidence:
       type: object
       properties:
@@ -2077,103 +2145,35 @@ components:
           type: integer
         validator:
           $ref: '#/components/schemas/Validator'
-    UnconfirmedTransactionsResponse:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-        id:
-          type: integer
-          example: 0
-        result:
-          required:
-          - n_txs
-          - total
-          - total_bytes
-          - txs
-          properties:
-            n_txs:
-              type: string
-              example: '82'
-            total:
-              type: string
-              example: '82'
-            total_bytes:
-              type: string
-              example: '19974'
-            txs:
-              type:
-              - array
-              - 'null'
-              items:
-                type:
-                - string
-                - 'null'
-              example:
-              - gAPwYl3uCjCMTXENChSMnIkb5ZpYHBKIZqecFEV2tuZr7xIUA75/FmYq9WymsOBJ0XSJ8yV8zmQKMIxNcQ0KFIyciRvlmlgcEohmp5wURXa25mvvEhQbrvwbvlNiT+Yjr86G+YQNx7kRVgowjE1xDQoUjJyJG+WaWBwSiGannBRFdrbma+8SFK2m+1oxgILuQLO55n8mWfnbIzyPCjCMTXENChSMnIkb5ZpYHBKIZqecFEV2tuZr7xIUQNGfkmhTNMis4j+dyMDIWXdIPiYKMIxNcQ0KFIyciRvlmlgcEohmp5wURXa25mvvEhS8sL0D0wwgGCItQwVowak5YB38KRIUCg4KBXVhdG9tEgUxMDA1NBDoxRgaagom61rphyECn8x7emhhKdRCB2io7aS/6Cpuq5NbVqbODmqOT3jWw6kSQKUresk+d+Gw0BhjiggTsu8+1voW+VlDCQ1GRYnMaFOHXhyFv7BCLhFWxLxHSAYT8a5XqoMayosZf9mANKdXArA=
-          type: object
-    SyncInfo:
+    Event:
       type: object
       properties:
-        latest_block_hash:
+        key:
           type: string
-          example: 790BA84C3545FCCC49A5C629CEE6EA58A6E875C3862175BDC11EE7AF54703501
-        latest_app_hash:
+          example: YWN0aW9u
+        value:
           type: string
-          example: C9AEBB441B787D9F1D846DE51F3826F4FD386108B59B08239653ABF59455C3F8
-        latest_block_height:
-          type: string
-          example: '1262196'
-        latest_block_time:
-          type: string
-          example: '2019-08-01T11:52:22.818762194Z'
-        earliest_block_hash:
-          type: string
-          example: 790BA84C3545FCCC49A5C629CEE6EA58A6E875C3862175BDC11EE7AF54703501
-        earliest_app_hash:
-          type: string
-          example: C9AEBB441B787D9F1D846DE51F3826F4FD386108B59B08239653ABF59455C3F8
-        earliest_block_height:
-          type: string
-          example: '1262196'
-        earliest_block_time:
-          type: string
-          example: '2019-08-01T11:52:22.818762194Z'
-        max_peer_block_height:
-          type: string
-          example: '1262196'
-        catching_up:
+          example: c2VuZA==
+        index:
           type: boolean
           example: false
-        total_synced_time:
+    Blockchain:
+      type: object
+      required:
+      - last_height
+      - block_metas
+      properties:
+        last_height:
           type: string
-          example: '1000000000'
-        remaining_time:
-          type: string
-          example: '0'
-        total_snapshots:
-          type: string
-          example: '10'
-        chunk_process_avg_time:
-          type: string
-          example: '1000000000'
-        snapshot_height:
-          type: string
-          example: '1262196'
-        snapshot_chunks_count:
-          type: string
-          example: '10'
-        snapshot_chunks_total:
-          type: string
-          example: '100'
-        backfilled_blocks:
-          type: string
-          example: '10'
-        backfill_blocks_total:
-          type: string
-          example: '100'
+          example: '1276718'
+        block_metas:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockMeta'
+    BlockComplete:
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/BlockID'
+        block:
+          $ref: '#/components/schemas/Block'

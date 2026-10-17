@@ -519,6 +519,40 @@ components:
           result:
             type: object
             additionalProperties: {}
+    EventItem:
+      description: Event item metadata
+      type: object
+      properties:
+        cursor:
+          type: string
+          example: 0005d7c09065e9a7-01cf
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              example: tendermint/event/Tx
+            value:
+              type: string
+              format: json
+    JSONRPC:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 0
+        jsonrpc:
+          type: string
+          example: '2.0'
+    ErrorResponse:
+      description: Error Response
+      allOf:
+      - $ref: '#/components/schemas/JSONRPC'
+      - type: object
+        properties:
+          error:
+            type: string
+            example: Description of failure
     EventsResponse:
       description: Events response
       allOf:
@@ -537,40 +571,6 @@ components:
           newest:
             type: string
             example: 0005d7c090660099-0200
-    EventItem:
-      description: Event item metadata
-      type: object
-      properties:
-        cursor:
-          type: string
-          example: 0005d7c09065e9a7-01cf
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              example: tendermint/event/Tx
-            value:
-              type: string
-              format: json
-    ErrorResponse:
-      description: Error Response
-      allOf:
-      - $ref: '#/components/schemas/JSONRPC'
-      - type: object
-        properties:
-          error:
-            type: string
-            example: Description of failure
-    JSONRPC:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 0
-        jsonrpc:
-          type: string
-          example: '2.0'
     EventFilter:
       description: Event filter query
       type: object
