@@ -64,59 +64,134 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Sei is a high-performance Layer 1 blockchain optimized for trading and
-decentralized exchange (DEX) applications. It is the first parallelized EVM
-blockchain, delivering sub-second block times (~400ms), 100 MGas/s throughput,
-and full Ethereum compatibility. Sei combines Twin Turbo Consensus, a
-parallelization engine, and SeiDB for unmatched scalability.
+Sei is a high-performance Layer 1 blockchain optimized for trading and decentralized exchange (DEX) applications. It is the first parallelized EVM blockchain, delivering sub-second block times (~400ms), 100 MGas/s throughput, and full Ethereum compatibility without code changes. Sei combines Twin Turbo Consensus, a parallelization engine, and SeiDB to eliminate traditional performance bottlenecks. Developers can interact with Sei through EVM JSON-RPC endpoints (Ethereum-compatible) and Cosmos REST/LCD endpoints for querying markets, orders, accounts, staking, governance, and DEX state on the pacific-1 mainnet and atlantic-2 testnet networks.
 
-## APIs
+**Areas:** Blockchain · Layer 1 · EVM · DeFi · Decentralized Exchange · Trading · Cosmos · Web3
 
-This repository contains an APIs.json 0.19 profile for Sei covering two
-primary public API surfaces:
+## Sei on APIs.io
 
-### 1. Sei EVM JSON-RPC API
+Everything profiled for Sei is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sei/](https://apis.io/providers/sei/)** — or go straight to one of the APIs or properties below.
 
-Ethereum-compatible JSON-RPC API at `https://evm-rpc.sei-apis.com` (mainnet).
-Supports the full Ethereum method set: sending transactions, querying balances
-and code, block and transaction lookups, log filters, gas estimation, and
-transaction tracing. Also includes Sei-specific cross-VM methods.
+### APIs (10)
 
-- Docs: https://docs.sei.io/evm/reference
-- Chain ID: 1329 (mainnet), 1328 (testnet)
+- [Sei EVM JSON-RPC API](https://apis.io/apis/sei/sei-evm-json-rpc-api/) — Ethereum-compatible JSON-RPC API for interacting with Sei's EVM layer. Supports standard Ethereum methods for sending transactions, querying account…
+- [Sei ABCI API](https://apis.io/apis/sei/sei-abci-api/) — ABCI APIs
+- [Sei Events API](https://apis.io/apis/sei/sei-events-api/) — Event subscription APIs
+- [Sei Evidence API](https://apis.io/apis/sei/sei-evidence-api/) — Evidence APIs
+- [Sei Info API](https://apis.io/apis/sei/sei-info-api/) — Informations about the node APIs
+- [Sei Query API](https://apis.io/apis/sei/sei-query-api/) — The Query API from Sei — 129 operation(s) for query.
+- [Sei Service API](https://apis.io/apis/sei/sei-service-api/) — The Service API from Sei — 10 operation(s) for service.
+- [Sei Tx API](https://apis.io/apis/sei/sei-tx-api/) — Transactions broadcast APIs
+- [Sei Unsafe API](https://apis.io/apis/sei/sei-unsafe-api/) — Unsafe APIs
+- [Sei Websocket API](https://apis.io/apis/sei/sei-websocket-api/) — Subscribe/unsubscribe are reserved for websocket events.
 
-### 2. Sei Cosmos REST API (LCD)
+### Published properties
 
-Cosmos SDK REST (Light Client Daemon) API at `https://rest.sei-apis.com`
-(mainnet). Exposes HTTP endpoints for bank, staking, governance, distribution,
-minting, IBC, and Sei-native DEX module queries.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Docs: https://docs.sei.io/cosmos-sdk/api
+#### Agentic access (1)
 
-## Endpoints
+Which operations an agent can call, which act, and which need a human in the loop.
 
-| Network      | EVM JSON-RPC                          | Cosmos REST                     |
-|--------------|---------------------------------------|---------------------------------|
-| Mainnet      | https://evm-rpc.sei-apis.com          | https://rest.sei-apis.com       |
-| Testnet      | https://evm-rpc-testnet.sei-apis.com  | https://rest-testnet.sei-apis.com|
-| Devnet       | https://evm-rpc-arctic-1.sei-apis.com | https://rest-arctic-1.sei-apis.com|
+- [Sei Agentic Access](https://apis.io/agentic-access/sei/sei-agentic-access/)
 
-Public endpoints: **free**, no API key required, rate-limited to 15 req/s.
+#### JSON-LD (1)
 
-## Resources
+Linked-data contexts for the provider's vocabulary.
 
-- Website: https://sei.io
-- Documentation: https://docs.sei.io
-- GitHub: https://github.com/sei-protocol
-- Block Explorer: https://www.seiscan.app
-- Discord: https://discord.gg/sei
+- [Sei Context](https://apis.io/jsonld/sei/sei/)
 
-## Repository Contents
+#### Vocabulary (1)
 
-```
-apis.yml                                    # APIs.json 0.19 provider profile
-plans/sei-plans.md                          # API access tiers and endpoint list
-rate-limits/sei-evm-json-rpc-api-rate-limits.yml
-rate-limits/sei-cosmos-rest-api-rate-limits.yml
-finops/sei-finops.md                        # Gas costs and cost optimization
-```
+The provider's domain terms, defined.
+
+- [Sei API Vocabulary](https://apis.io/vocabularies/sei/sei-vocabulary/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [HTTP API Console ABCI API](https://apis.io/collections/sei/open-sei-abci-api/)
+- [HTTP API Console ABCI Events API](https://apis.io/collections/sei/open-sei-events-api/)
+- [HTTP API Console ABCI Evidence API](https://apis.io/collections/sei/open-sei-evidence-api/)
+- [HTTP API Console ABCI Info API](https://apis.io/collections/sei/open-sei-info-api/)
+- [HTTP API Console ABCI Query API](https://apis.io/collections/sei/open-sei-query-api/)
+- [HTTP API Console ABCI Service API](https://apis.io/collections/sei/open-sei-service-api/)
+- [HTTP API Console ABCI Tx API](https://apis.io/collections/sei/open-sei-tx-api/)
+- [HTTP API Console ABCI Unsafe API](https://apis.io/collections/sei/open-sei-unsafe-api/)
+- [HTTP API Console ABCI Websocket API](https://apis.io/collections/sei/open-sei-websocket-api/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sei Domain Security](https://apis.io/security/sei/sei-domain-security/)
+
+#### Rate limits (2)
+
+Published request limits.
+
+- [Sei Cosmos Rest Api Rate Limits](https://apis.io/rate-limits/sei/sei-cosmos-rest-api-rate-limits/)
+- [Sei Evm Json Rpc Api Rate Limits](https://apis.io/rate-limits/sei/sei-evm-json-rpc-api-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://sei.io)
+- [Documentation](https://docs.sei.io)
+- [Blog](https://blog.sei.io)
+- [Status](https://status.sei.io)
+
+## API Evangelist rating
+
+**Kin Score 25.3** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 43.6 |
+| Contract governance | 13.6 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 0.0 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.2** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sei/](https://apis.io/providers/sei/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sei: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sei/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
